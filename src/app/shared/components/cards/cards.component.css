@@ -1,0 +1,21 @@
+.example-card {
+    text-align: center;
+    border-radius: 5px;
+}
+.circle-img{
+    border-radius: 50%;
+}
+.card-small{
+    cursor: pointer;
+    max-width: 150px;
+}
+.card-big{
+    max-width: 275px;
+}
+.mat-card-actions{
+    display: flex;
+    justify-content: space-between
+}
+.card-medium{
+    max-width: 250px;
+}

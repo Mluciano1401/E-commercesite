@@ -1,0 +1,45 @@
+<!-- big card design -->
+<div *ngIf="mode==='big'" class="card-big">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{datacard.name}}</mat-card-title>
+          <mat-card-subtitle>{{datacard.name}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{datacard.img}}" alt="">
+        <mat-card-content>
+          <p>
+            {{datacard.name}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="mat-card-actions">
+          <button mat-icon-button aria-label="Example icon button with a heart icon">
+            <mat-icon color="#bdbdbd">favorite_border</mat-icon>
+          </button>
+          <button mat-raised-button color="primary">buy</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<!-- medium card design -->
+<div *ngIf="mode==='medium'" class="card-medium">
+    <mat-card class="example-card">   
+        <img mat-card-image src="{{datacard.img}}" alt="">      
+        <mat-card-content>
+            <mat-card-title>{{datacard.name}}</mat-card-title>
+        </mat-card-content>
+        <mat-card-actions class="mat-card-actions">
+          <button mat-icon-button aria-label="Example icon button with a heart icon">
+            <mat-icon>favorite_border</mat-icon>
+          </button>
+          <button mat-raised-button color="primary">buy</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<!-- small card design -->
+<div *ngIf="mode==='small'" class="card-small">
+    <mat-card class="example-card">
+        <img mat-card-image src="{{datacard.img}}" alt="" class="circle-img">
+        <mat-card-content>
+            <mat-card-title>{{datacard.name}}</mat-card-title>
+        </mat-card-content>
+    </mat-card> 
+</div>

@@ -1,0 +1,26 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+.toolbar{
+    padding: 42px;
+    margin: 0;
+    background-color: #00467F;
+    background: -webkit-linear-gradient(to right, #A5CC82, #00467F);
+    background: linear-gradient(to right, #A5CC82, #00467F);
+    color: white;
+}
+.btn-color{
+    color: #00467F;
+    color: -webkit-linear-gradient(to right, #A5CC82, #00467F);
+    color: linear-gradient(to right, #A5CC82, #00467F);
+}
+.container{
+    min-width: 150px;
+    max-width: 1920px;
+    width: 100%;
+    background-color: white;
+    padding: 15px;
+}
+.categories-content{
+    margin: 2rem;
+}

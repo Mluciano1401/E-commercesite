@@ -1,0 +1,42 @@
+.container{
+  display: flex;
+  justify-content: center; 
+  position: relative; 
+  top: 50%;
+  margin-top: -5px;
+}
+.example-form {
+    position: absolute;
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    top: 40%;
+    transform: translate(0, -50%);
+  }
+.card-body{
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+}  
+.example-full-width {
+    width: 100%;
+}
+.text-danger{
+  text-align: start;
+  color: red;
+}
+.form-content{
+    padding: 20px;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+.margin-button{
+  margin: 22px;
+  display: flex;
+  justify-content: space-between;
+}
+.text-center{
+  text-align: center;
+  margin-bottom: 12px;
+} 

@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #00467F;
+  background: -webkit-linear-gradient(to right, #A5CC82, #00467F); 
+  background: linear-gradient(to right, #A5CC82, #00467F);
+  box-sizing: border-box;
+  }
+.title{
+    font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 12px;
+}
+button{
+  text-transform: uppercase;
+}

@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="card-body example-form">
+        <div class="title">
+          <span>Register</span>  
+        </div>
+        <form [formGroup]="userForm" class="form-content">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput formControlName="name">                           
+            </mat-form-field> 
+            <div class="text-danger" *ngIf="userForm.get('name')?.hasError('required') && userForm.get('name')?.touched">
+                <span>Este campo <strong>es obligatorio</strong></span>
+            </div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Lastname</mat-label>                 
+                <input type="text"  matInput formControlName="lastname">
+            </mat-form-field> 
+            <div class="text-danger" *ngIf="userForm.get('lastname')?.hasError('required') && userForm.get('lastname')?.touched">
+                <span>Este campo <strong>es obligatorio</strong></span>
+            </div>                             
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Username</mat-label>
+                <input type="text" matInput formControlName="username">
+            </mat-form-field>  
+            <div class="text-danger" *ngIf="userForm.get('username')?.hasError('required') && userForm.get('username')?.touched">
+                <span>Este campo <strong>es obligatorio</strong></span>
+            </div>               
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+           </mat-form-field> 
+            <div class="text-danger" *ngIf="userForm.get('password')?.hasError('required') && userForm.get('password')?.touched">
+                <span>Este campo <strong>es obligatorio</strong></span>
+            </div>
+            <div *ngIf="userForm.get('password')?.dirty">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput [type]="hide2 ? 'password' : 'text'" matInput formControlName="confirmpassword">
+                    <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                      <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+            <mat-radio-group aria-label="Select an option" formControlName="role">
+                <h4>Role</h4>
+                <mat-radio-button value="seller">Seller</mat-radio-button>
+                <mat-radio-button value="buyer">Buyer</mat-radio-button>
+            </mat-radio-group>
+            <div class="margin-button">
+                <button routerLink="/" mat-raised-button>cancel</button>
+                <button type="submit" (click)="submit()" mat-raised-button color="primary" [disabled]="userForm.invalid">submit</button>
+            </div>
+        </form>
+        <div class=" text-center ">
+            <span>already have an account? <a routerLink="/auth/login">log in</a></span>
+        </div>
+    </div>
+</div>
+

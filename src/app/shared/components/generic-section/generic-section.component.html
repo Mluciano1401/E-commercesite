@@ -1,0 +1,10 @@
+<div class="section-generic" [ngClass]="{'card-small':mode === 'small','card-big':mode === 'big','card-medium':mode === 'medium'}">
+    <h1>{{title}}</h1>
+    <mat-grid-list cols="{{cols}}" rowHeight="{{rowh}}" >
+        <mat-grid-tile *ngFor="let category of data">
+            <app-cards [datacard]="category" [mode]="mode"></app-cards>
+        </mat-grid-tile>  
+    </mat-grid-list>
+     
+</div>
+
