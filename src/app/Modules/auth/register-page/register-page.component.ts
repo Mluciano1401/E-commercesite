@@ -1,8 +1,9 @@
 import { User } from './../../../models/user.model';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-
+import { FormBuilder,  FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { ConfirmedValidator } from './validator/confirmed.validator';
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
@@ -14,7 +15,7 @@ export class RegisterPageComponent implements OnInit {
   hide2:boolean = true;
   constructor(private fb: FormBuilder,
     private router: Router,
-    private aRouter: ActivatedRoute) { 
+    private userService: AuthService) { 
       this.userForm = this.fb.group({
         name: ['', Validators.required],
         lastname: ['', Validators.required],
@@ -24,18 +25,43 @@ export class RegisterPageComponent implements OnInit {
           Validators.minLength(6),
           Validators.maxLength(22)
         ]],
-        confirmpassword: ['', [
-          Validators.required, 
-          Validators.requiredTrue
+        confirmpassword: ['',[
+          Validators.required,
         ]],
         role: ['', Validators.required],
-      })
+      }, {validator: ConfirmedValidator('password', 'confirmpassword')})
     }
   ngOnInit(): void {
     
   }
+  checkPasswords(): boolean{ 
+    let pass = this.userForm.get('password')?.value;
+    let confirmPass = this.userForm.get('confirmpassword')?.value
+    if(pass == confirmPass){
+      return true
+    }
+    return false
+  }
   submit(): void{
+    const USER: User = {
+      name: this.userForm.get('name')?.value,
+      lastname: this.userForm.get('lastname')?.value,
+      username: this.userForm.get('username')?.value,
+      password: this.userForm.get('password')?.value,
+      role: this.userForm.get('role')?.value,
+    }
+    this.userService.postUser(USER).subscribe(data => {
+      if(USER.role=="seller"){
+        this.router.navigate(['/home/seller']);
+      }
+      else{
+        this.router.navigate(['/home/buyer']);
+      }
 
+    }, error => {
+      console.log(error);
+      this.userForm.reset();
+    })
     console.log(this.userForm.value)
   }
 
