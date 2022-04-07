@@ -9,21 +9,21 @@
                 <input type="text" matInput formControlName="name">                           
             </mat-form-field> 
             <div class="text-danger" *ngIf="userForm.get('name')?.hasError('required') && userForm.get('name')?.touched">
-                <span>Este campo <strong>es obligatorio</strong></span>
+                <span>This field  <strong>is required</strong></span>
             </div>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Lastname</mat-label>                 
                 <input type="text"  matInput formControlName="lastname">
             </mat-form-field> 
             <div class="text-danger" *ngIf="userForm.get('lastname')?.hasError('required') && userForm.get('lastname')?.touched">
-                <span>Este campo <strong>es obligatorio</strong></span>
+                <span>This field  <strong>is required</strong></span>
             </div>                             
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Username</mat-label>
                 <input type="text" matInput formControlName="username">
             </mat-form-field>  
             <div class="text-danger" *ngIf="userForm.get('username')?.hasError('required') && userForm.get('username')?.touched">
-                <span>Este campo <strong>es obligatorio</strong></span>
+                <span>This field  <strong>is required</strong></span>
             </div>               
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Password</mat-label>
@@ -33,7 +33,7 @@
                 </button>
            </mat-form-field> 
             <div class="text-danger" *ngIf="userForm.get('password')?.hasError('required') && userForm.get('password')?.touched">
-                <span>Este campo <strong>es obligatorio</strong></span>
+                <span>This field  <strong>is required</strong></span>
             </div>
             <div *ngIf="userForm.get('password')?.dirty">
                 <mat-form-field class="example-full-width" appearance="fill">

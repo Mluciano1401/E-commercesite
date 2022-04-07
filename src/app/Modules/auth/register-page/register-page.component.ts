@@ -19,7 +19,7 @@ export class RegisterPageComponent implements OnInit {
       this.userForm = this.fb.group({
         name: ['', Validators.required],
         lastname: ['', Validators.required],
-        username: ['', Validators.required],
+        username: ['', /* Validators.required */],
         password: ['', [
           Validators.required,
           Validators.minLength(6),
@@ -32,17 +32,10 @@ export class RegisterPageComponent implements OnInit {
       }, {validator: ConfirmedValidator('password', 'confirmpassword')})
     }
   ngOnInit(): void {
-    
-  }
-  checkPasswords(): boolean{ 
-    let pass = this.userForm.get('password')?.value;
-    let confirmPass = this.userForm.get('confirmpassword')?.value
-    if(pass == confirmPass){
-      return true
-    }
-    return false
+   
   }
   submit(): void{
+    
     const USER: User = {
       name: this.userForm.get('name')?.value,
       lastname: this.userForm.get('lastname')?.value,
@@ -50,8 +43,8 @@ export class RegisterPageComponent implements OnInit {
       password: this.userForm.get('password')?.value,
       role: this.userForm.get('role')?.value,
     }
-    this.userService.postUser(USER).subscribe(data => {
-      if(USER.role=="seller"){
+    this.userService.postUser(USER).subscribe((user) => {
+      if(user.role=="seller"){
         this.router.navigate(['/home/seller']);
       }
       else{

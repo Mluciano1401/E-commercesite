@@ -5,10 +5,10 @@
         </div>
         <form [formGroup]="userLogForm" class="form-content">
             <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Name</mat-label>
-                <input type="text" matInput formControlName="name">                           
+                <mat-label>Username</mat-label>
+                <input type="text" matInput formControlName="username">                           
             </mat-form-field> 
-            <div class="text-danger" *ngIf="userLogForm.get('name')?.hasError('required') && userLogForm.get('name')?.touched">
+            <div class="text-danger" *ngIf="userLogForm.get('username')?.hasError('required') && userLogForm.get('username')?.touched">
                 <span>Este campo <strong>es obligatorio</strong></span>
             </div>
             <mat-form-field class="example-full-width" appearance="fill">
@@ -23,7 +23,7 @@
             </div>
             <div class="margin-button">
                 <button routerLink="/" mat-raised-button>cancel</button>
-                <button type="submit"  mat-raised-button color="primary" [disabled]="userLogForm.invalid">agree</button>
+                <button type="submit" (click)="submit()"  mat-raised-button color="primary" [disabled]="userLogForm.invalid">agree</button>
             </div>
         </form>
         <div class=" text-center ">

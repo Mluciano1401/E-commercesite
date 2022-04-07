@@ -8,6 +8,7 @@
     background: -webkit-linear-gradient(to right, #A5CC82, #00467F);
     background: linear-gradient(to right, #A5CC82, #00467F);
     color: white;
+    width: 100%;
 }
 .btn-color{
     color: #00467F;
@@ -16,10 +17,8 @@
 }
 .container{
     min-width: 150px;
-    max-width: 1920px;
     width: 100%;
     background-color: white;
-    padding: 15px;
 }
 .categories-content{
     margin: 2rem;

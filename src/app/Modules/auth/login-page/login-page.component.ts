@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -12,9 +13,9 @@ export class LoginPageComponent implements OnInit {
   hide:boolean = true;
   constructor(private fb: FormBuilder,
     private router: Router,
-    private aRouter: ActivatedRoute) { 
+    private userService: AuthService) { 
       this.userLogForm = this.fb.group({
-        name: ['', Validators.required],
+        username: ['', Validators.required],
         password: ['', Validators.required],
       })
     }
@@ -22,7 +23,21 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
   submit(): void{
-
+    const login = {
+      username: this.userLogForm.get('username')?.value,
+      password: this.userLogForm.get('password')?.value
+    }
+    this.userService.loginUser(login).subscribe((user) => {
+      if(user.role=="seller"){
+        this.router.navigate(['/home/seller']);
+      }
+      else{
+        this.router.navigate(['/home/buyer']);
+      }
+    },  error => {
+      console.log(error);
+      this.userLogForm.reset();
+    })
     console.log(this.userLogForm.value)
   }
 }

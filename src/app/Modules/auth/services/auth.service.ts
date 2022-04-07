@@ -7,11 +7,14 @@ import { User } from 'src/app/models/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  url="http://localhost:4000/api/user/"
+  url="http://localhost:4000/api/auth/"
   constructor(
     private http: HttpClient
   ) { }
   postUser(user: User): Observable<any>{
-    return this.http.post(this.url, user)
+    return this.http.post(`${this.url}register`, user)
+  }
+  loginUser(data:any): Observable<any>{
+    return this.http.post(`${this.url}login`, data)
   }
 }
