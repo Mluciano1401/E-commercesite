@@ -1,0 +1,31 @@
+<div class="categories-content">
+    <button mat-mini-fab color="gray" (click)="return()">
+        <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+    <div class="profile-section">
+        <div>
+            <img class="profile-img" src="../../../assets/images/profileImg/img_568656.png" alt="">
+        </div>
+        <div class="profile-description">
+            <h1>{{seller.username}}</h1>
+            <h2>{{seller.name}} {{seller.lastname}}</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, voluptatem voluptatibus quaerat pariatur omnis, blanditiis aliquid ipsum a doloremque iure consectetur officia modi, veritatis voluptates unde repellendus reprehenderit. Optio, dolores!</p>
+            <div class="profile-section-actions">
+                <button mat-icon-button aria-label="Example icon button with a heart icon">
+                    <mat-icon>favorite_border</mat-icon>
+                  </button>
+                <button  mat-icon-button aria-label="Example icon button">
+                    <mat-icon>message</mat-icon>
+                </button>
+                <button mat-raised-button color="primary">follow</button>
+            </div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>  
+    <div class="content" *ngIf="products.length > 0">
+        <app-generic-section [title]="'Products'" [data]="products" [mode]="'big'" [rowh]=400></app-generic-section>
+    </div>    
+    <div class="info" *ngIf="products.length == 0">
+        <mat-icon>info</mat-icon><h3>No found products by this seller</h3>
+    </div>
+</div>

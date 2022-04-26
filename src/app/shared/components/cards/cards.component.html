@@ -3,12 +3,12 @@
     <mat-card class="example-card">
         <mat-card-header>
           <mat-card-title>{{datacard.name}}</mat-card-title>
-          <mat-card-subtitle>{{datacard.name}}</mat-card-subtitle>
+          <mat-card-subtitle>{{datacard.description}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="{{datacard.img}}" alt="">
+        <img mat-card-image src="{{datacard.urlImg}}" alt="">
         <mat-card-content>
           <p>
-            {{datacard.name}}
+            ${{datacard.price}}
           </p>
         </mat-card-content>
         <mat-card-actions class="mat-card-actions">
@@ -22,7 +22,7 @@
 <!-- medium card design -->
 <div *ngIf="mode==='medium'" class="card-medium">
     <mat-card class="example-card">   
-        <img mat-card-image src="{{datacard.img}}" alt="">      
+        <img mat-card-image src="{{datacard.urlImg}}" alt="">      
         <mat-card-content>
             <mat-card-title>{{datacard.name}}</mat-card-title>
         </mat-card-content>
@@ -37,9 +37,18 @@
 <!-- small card design -->
 <div *ngIf="mode==='small'" class="card-small">
     <mat-card class="example-card">
-        <img mat-card-image src="{{datacard.img}}" alt="" class="circle-img">
+        <img mat-card-image src="{{datacard.urlImg}}" alt="" class="circle-img">
         <mat-card-content>
             <mat-card-title>{{datacard.name}}</mat-card-title>
         </mat-card-content>
     </mat-card> 
+</div>
+<!-- profile card design -->
+<div *ngIf="mode==='profile'" class="card-profile">
+  <mat-card (click)="getproducts(datacard._id)" class="example-card">
+      <img mat-card-image src="{{urlImg}}" alt="" class="circle-img">
+      <mat-card-content>
+          <mat-card-title>{{datacard.username}}</mat-card-title>
+      </mat-card-content>
+  </mat-card> 
 </div>

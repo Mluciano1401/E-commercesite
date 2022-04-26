@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-carousel',
@@ -7,7 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
   @Input() datacarousel: Array<any> = [];
-  constructor() { }
+  scrHeight:any;
+  scrWidth:any; 
+
+  constructor() { 
+    this.scrHeight = (window.screen.height) + "px";
+    this.scrWidth = (window.screen.width) + "px";
+    console.log(this.scrHeight, this.scrWidth);
+  }
 
   ngOnInit(): void {
   }

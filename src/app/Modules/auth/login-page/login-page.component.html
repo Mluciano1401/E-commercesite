@@ -6,21 +6,25 @@
         <form [formGroup]="userLogForm" class="form-content">
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Username</mat-label>
-                <input type="text" matInput formControlName="username">                           
-            </mat-form-field> 
-            <div class="text-danger" *ngIf="userLogForm.get('username')?.hasError('required') && userLogForm.get('username')?.touched">
-                <span>Este campo <strong>es obligatorio</strong></span>
-            </div>
+                <input type="text" matInput formControlName="username">  
+                <mat-error *ngIf="userLogForm.get('username')?.invalid">
+                    This field <strong>is required</strong>
+                </mat-error>                         
+            </mat-form-field>
             <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Password</mat-label>
                   <input matInput [type]="hide ? 'password' : 'text'" matInput formControlName="password">
                   <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
-            </mat-form-field>  
-            <div class="text-danger" *ngIf="userLogForm.get('password')?.hasError('required') && userLogForm.get('password')?.touched">
-                <span>Este campo <strong>es obligatorio</strong></span>
-            </div>
+                  <mat-error *ngIf="userLogForm.get('password')?.invalid">
+                    This field <strong>is required</strong>
+                  </mat-error>
+            </mat-form-field> 
+            <!-- <div [ngClass]="hasError? 'unsuccessful-request-message' : 'successful-request-message'"
+            *ngIf="requestResult.message"> 
+                {{ requestResult.message }} 
+            </div> -->
             <div class="margin-button">
                 <button routerLink="/" mat-raised-button>cancel</button>
                 <button type="submit" (click)="submit()"  mat-raised-button color="primary" [disabled]="userLogForm.invalid">agree</button>

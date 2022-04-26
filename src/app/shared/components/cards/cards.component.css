@@ -7,15 +7,22 @@
 }
 .card-small{
     cursor: pointer;
-    max-width: 150px;
+    max-width: 140px;
+}
+.card-profile{
+    cursor: pointer;
+    max-width: 170px;
 }
 .card-big{
-    max-width: 275px;
+    max-width: 265px;
 }
 .mat-card-actions{
     display: flex;
     justify-content: space-between
 }
 .card-medium{
-    max-width: 250px;
+    max-width: 220px;
+}
+mat-card-image{
+    max-width: 70%;
 }

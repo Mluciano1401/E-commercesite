@@ -1,21 +1,21 @@
 <div>
   <p>
     <mat-toolbar class="toolbar">
-    <span class="title">E-buy</span>
-    <span class="example-spacer"></span>
-    <button mat-button color="white" routerLink="/auth/login">
-      Log in
-    </button>
-    <button mat-raised-button class="btn-color" routerLink="/auth/register">
-     Register
-   </button>
-  </mat-toolbar>
+      <span class="title">E-buy</span>
+      <span class="example-spacer"></span>
+      <button mat-button color="white" routerLink="/auth/login">
+        Log in
+      </button>
+      <button mat-raised-button class="btn-color" routerLink="/auth/register">
+      Register
+      </button>
+    </mat-toolbar>
   </p>
   <div class="container">
     <app-carousel [datacarousel]="urlImgs"></app-carousel>
     <div class="categories-content">
-      <app-generic-section [title]="'Categories'" [data]="categories" [mode]="'small'" [cols]=3 [rowh]=200></app-generic-section>
-      <app-generic-section [title]="'Offers'" [data]="categories" [mode]="'medium'" [cols]=3 [rowh]=325></app-generic-section>
+      <app-generic-section [title]="'Categories'" [data]="categories" [mode]="'small'" [rowh]=200></app-generic-section>
+      <app-generic-section [title]="'Offers'" [data]="products" [mode]="'medium'" [rowh]=325></app-generic-section>
     </div>
   </div>
   <app-footer></app-footer>  

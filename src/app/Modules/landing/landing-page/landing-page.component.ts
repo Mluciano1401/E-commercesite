@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/shared/services/products.service/product.service';
+import { Dataraw } from '../../../data/categories';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -6,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
   urlImgs:Array<any>=[];
-  categories:Array<any>=[];
-  constructor() { }
+  categories:Array<any>=Dataraw.category;
+  //categories:Array<any>=[];
+  products:Array<any>=[];
+  constructor(
+    private Productservice: ProductService
+  ) {
+  }
 
   ngOnInit(): void {
     this.urlImgs=[
@@ -20,33 +27,13 @@ export class LandingPageComponent implements OnInit {
       {"text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       "url": "https://s3.amazonaws.com/cdn.wp.m4ecmx/wp-content/uploads/2019/04/25160328/El-crecimiento-del-eCommerce-en-M%C3%A9xico-compressor.jpg"},     
     ]
-    this.categories = [
-      {
-        "_id": 1,
-        "name": "offers",
-        "img": "../../../../assets/images/img-broken.png"
-      },
-    {
-        "_id": 2,
-        "name": "office items",
-        "img": "../../../../assets/images/img-broken.png"
-    },
-    {
-        "_id": 3,
-        "name": "clothes",
-        "img": "../../../../assets/images/img-broken.png"
-    },
-    {
-        "_id": 4,
-        "name": "electronics",
-        "img": "../../../../assets/images/img-broken.png"
-    },
-    {
-        "_id": 5,
-        "name": "home items",
-        "img": "../../../../assets/images/img-broken.png"
-    }
-    ];
+    this.categories;
+    this.getproducts()
   }
-
+  getproducts(){
+    this.Productservice.getproducts().subscribe((data)=>{
+      this.products = data
+      this.categories = data
+    })
+  }
 }

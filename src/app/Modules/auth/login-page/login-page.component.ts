@@ -9,20 +9,25 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['../auth.css']
 })
 export class LoginPageComponent implements OnInit {
-  userLogForm:FormGroup;
+  userLogForm!: FormGroup;
   hide:boolean = true;
+  hasError!: boolean;
   constructor(private fb: FormBuilder,
     private router: Router,
     private userService: AuthService) { 
-      this.userLogForm = this.fb.group({
-        username: ['', Validators.required],
-        password: ['', Validators.required],
-      })
     }
 
   ngOnInit(): void {
+    this.form();
+  }
+  private form(): void{
+    this.userLogForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    })
   }
   submit(): void{
+    this.hasError = false;
     const login = {
       username: this.userLogForm.get('username')?.value,
       password: this.userLogForm.get('password')?.value
@@ -35,9 +40,8 @@ export class LoginPageComponent implements OnInit {
         this.router.navigate(['/home/buyer']);
       }
     },  error => {
-      console.log(error);
+      this.hasError = true;
       this.userLogForm.reset();
     })
-    console.log(this.userLogForm.value)
   }
 }

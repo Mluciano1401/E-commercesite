@@ -10,6 +10,9 @@ import { GenericSectionComponent } from './components/generic-section/generic-se
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatDividerModule} from '@angular/material/divider';
+
 @NgModule({
   declarations: [
     CardsComponent,
@@ -23,7 +26,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatCardModule,
     MatGridListModule,
     MatButtonModule,
-    MatIconModule,
+    MatIconModule,       
+    MatToolbarModule,
+    MatDividerModule,
     MatSidenavModule
   ],
   exports: [

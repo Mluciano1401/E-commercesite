@@ -6,35 +6,35 @@
         <form [formGroup]="userForm" class="form-content">
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Name</mat-label>
-                <input type="text" matInput formControlName="name">                           
+                <input type="text" matInput formControlName="name">
+                <mat-error *ngIf="userForm.get('name')?.invalid">
+                    This field <strong>is required</strong>
+                </mat-error>                           
             </mat-form-field> 
-            <div class="text-danger" *ngIf="userForm.get('name')?.hasError('required') && userForm.get('name')?.touched">
-                <span>This field  <strong>is required</strong></span>
-            </div>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Lastname</mat-label>                 
                 <input type="text"  matInput formControlName="lastname">
-            </mat-form-field> 
-            <div class="text-danger" *ngIf="userForm.get('lastname')?.hasError('required') && userForm.get('lastname')?.touched">
-                <span>This field  <strong>is required</strong></span>
-            </div>                             
+                <mat-error *ngIf="userForm.get('lastname')?.invalid">
+                    This field <strong>is required</strong>
+                  </mat-error>
+            </mat-form-field>                            
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Username</mat-label>
                 <input type="text" matInput formControlName="username">
-            </mat-form-field>  
-            <div class="text-danger" *ngIf="userForm.get('username')?.hasError('required') && userForm.get('username')?.touched">
-                <span>This field  <strong>is required</strong></span>
-            </div>               
+                <mat-error *ngIf="userForm.get('username')?.invalid">
+                    This field <strong>is required</strong>
+                </mat-error>
+            </mat-form-field>             
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Password</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" matInput formControlName="password">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-           </mat-form-field> 
-            <div class="text-danger" *ngIf="userForm.get('password')?.hasError('required') && userForm.get('password')?.touched">
-                <span>This field  <strong>is required</strong></span>
-            </div>
+                <mat-error *ngIf="userForm.get('password')?.invalid">
+                    This field <strong>is required</strong>
+                </mat-error>
+           </mat-form-field>
             <div *ngIf="userForm.get('password')?.dirty">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Confirm Password</mat-label>
@@ -42,6 +42,12 @@
                     <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
                       <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
+                    <mat-error *ngIf="userForm.get('confirmpassword')?.invalid">
+                        This field <strong>is required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="userForm.invalid && userForm.get('confirmpassword')?.invalid  && userForm.get('confirmpassword')?.touched">
+                        Passwords do not match
+                    </mat-error>
                 </mat-form-field>
             </div>
             <mat-radio-group aria-label="Select an option" formControlName="role">

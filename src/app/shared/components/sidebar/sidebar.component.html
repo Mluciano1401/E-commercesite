@@ -1,9 +1,33 @@
 <mat-drawer-container class="example-container" hasBackdrop="true" autosize>
-    <mat-drawer #drawer mode="over">I'm a drawer</mat-drawer>
-    <mat-drawer-content>      
-      <button mat-raised-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
-      <div>
-
+    <mat-drawer #drawer mode="over">
+      <mat-toolbar class="toolbar">
+        <span class="example-spacer"></span>
+        <div class="btn-close">                   
+            <mat-icon (click)="drawer.close()">close</mat-icon>        
+        </div>
+      </mat-toolbar>
+      <div class="content-menu" *ngFor="let item of menu">
+        <a href="{{item.url}}">{{item.name}}</a>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+      <mat-toolbar class="toolbar">          
+        <mat-icon (click)="drawer.toggle()">menu</mat-icon>      
+        <span class="example-spacer"></span>
+        <div>
+          <img class="profile-img" src="../../../assets/images/profileImg/img_568656.png" alt="">
+        </div>
+        <button mat-button color="white" routerLink="/">
+          Log out
+        </button>
+      </mat-toolbar>        
+      <div class="categories-content">      
+        <ng-container *ngTemplateOutlet="sectionbuyer"></ng-container>   
       </div>
     </mat-drawer-content>
-  </mat-drawer-container>
+</mat-drawer-container>
+<ng-template #sectionbuyer>
+  <app-generic-section [title]="'The most recent'" [data]="data" [mode]="'big'" [rowh]=500></app-generic-section>
+  <app-generic-section [title]="'Suppliers'" [data]="seller" [mode]="'profile'" [rowh]=325></app-generic-section>
+  <app-generic-section [title]="'Offers'" [data]="categories" [mode]="'small'" [rowh]=325></app-generic-section>
+</ng-template>

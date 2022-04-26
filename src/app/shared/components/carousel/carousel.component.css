@@ -29,19 +29,19 @@
         transform: translateX(0px)
       }
   }
-  @media screen and (max-width: 768px) {      
+  @media screen and (max-width: 648px){      
     @keyframes sliding {
       0% {
         transform: translateX(0);
       }
       33.333%  {
-        transform: translateX(-200px);
+        transform: translateX(-400px);
       }
       66.666% {
-        transform: translateX(-200px);
+        transform: translateX(-400px);
       }
       99.999%{
-        transform: translateX(-400px);
+        transform: translateX(-800px);
       }
       100% {
         transform: translateX(0);
@@ -49,10 +49,9 @@
     }
   }
   .boximage{
-    display: block;
+    display: flex;
+    flex-direction: row;
     flex: 1 0 100%;
-    width: 100%;
-    height: 100%;
   }
   .boximage figure {
     display: flex;
@@ -63,9 +62,7 @@
   .boximage img {
     width: 100%;
     height: 100%;
-    display: block;
     flex: 0 0 auto;
-    z-index: 0;
     object-fit: cover;
   }
   .boximage div > h1 {

@@ -10,29 +10,35 @@ import { ConfirmedValidator } from './validator/confirmed.validator';
   styleUrls: ['../auth.css']
 })
 export class RegisterPageComponent implements OnInit {
-  userForm:FormGroup;
+  userForm!: FormGroup;
   hide:boolean = true;
   hide2:boolean = true;
+  message:string="";
   constructor(private fb: FormBuilder,
     private router: Router,
-    private userService: AuthService) { 
-      this.userForm = this.fb.group({
-        name: ['', Validators.required],
-        lastname: ['', Validators.required],
-        username: ['', /* Validators.required */],
-        password: ['', [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(22)
-        ]],
-        confirmpassword: ['',[
-          Validators.required,
-        ]],
-        role: ['', Validators.required],
-      }, {validator: ConfirmedValidator('password', 'confirmpassword')})
-    }
+    private userService: AuthService) {}
+
   ngOnInit(): void {
-   
+   this.formBuilder();
+  }
+  private formBuilder(): void{
+    this.userForm = this.fb.group({
+      name: ['', Validators.required],
+      lastname: ['', Validators.required],
+      username: ['', Validators.required],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(22)
+      ]],
+      confirmpassword: ['',[
+        Validators.required,
+      ]],
+      role: ['', Validators.required],
+    }, {
+      validator: ConfirmedValidator('password', 'confirmpassword'),
+      
+  })
   }
   submit(): void{
     
@@ -52,10 +58,8 @@ export class RegisterPageComponent implements OnInit {
       }
 
     }, error => {
-      console.log(error);
       this.userForm.reset();
     })
-    console.log(this.userForm.value)
   }
 
 }
