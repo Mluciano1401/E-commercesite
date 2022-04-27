@@ -9,19 +9,22 @@ import { SectionproductsComponent } from './home-sections/sectionproducts/sectio
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-
+import { ProfileComponent } from './profile/profile.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     HomeSellerComponent,
     HomeBuyerComponent,
-    SectionproductsComponent
+    SectionproductsComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     MatDividerModule,
     MatIconModule,
+    MatDialogModule,
     MatButtonModule,
     SharedModule
   ]

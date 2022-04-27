@@ -1,4 +1,5 @@
 <div>
+  <app-header></app-header>
   <p>
     <mat-toolbar class="toolbar">
       <span class="title">E-buy</span>
@@ -10,9 +11,9 @@
       Register
       </button>
     </mat-toolbar>
-  </p>
-  <div class="container">
-    <app-carousel [datacarousel]="urlImgs"></app-carousel>
+  </p> 
+  <app-carousel [datacarousel]="urlImgs"></app-carousel>
+  <div class="container">   
     <div class="categories-content">
       <app-generic-section [title]="'Categories'" [data]="categories" [mode]="'small'" [rowh]=200></app-generic-section>
       <app-generic-section [title]="'Offers'" [data]="products" [mode]="'medium'" [rowh]=325></app-generic-section>

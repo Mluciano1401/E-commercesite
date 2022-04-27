@@ -31,7 +31,7 @@ export class GenericSectionComponent implements OnInit {
     else{
       this.cols = 3;
     }
-    if(this.scrWidth <= 480 && this.mode == "small"){
+    if(this.scrWidth <= 480 && (this.mode == "small"||this.mode == "profile")){
       this.cols = 2;
     }
   }

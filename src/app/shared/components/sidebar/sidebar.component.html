@@ -1,6 +1,8 @@
 <mat-drawer-container class="example-container" hasBackdrop="true" autosize>
     <mat-drawer #drawer mode="over">
       <mat-toolbar class="toolbar">
+        <span class="title">E-buy</span>
+          <mat-divider></mat-divider>  
         <span class="example-spacer"></span>
         <div class="btn-close">                   
             <mat-icon (click)="drawer.close()">close</mat-icon>        
@@ -14,11 +16,8 @@
       <mat-toolbar class="toolbar">          
         <mat-icon (click)="drawer.toggle()">menu</mat-icon>      
         <span class="example-spacer"></span>
-        <div>
+        <button mat-icon-button (click)="openBottomSheet()">
           <img class="profile-img" src="../../../assets/images/profileImg/img_568656.png" alt="">
-        </div>
-        <button mat-button color="white" routerLink="/">
-          Log out
         </button>
       </mat-toolbar>        
       <div class="categories-content">      

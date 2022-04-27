@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,    
+    HttpClientModule, 
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

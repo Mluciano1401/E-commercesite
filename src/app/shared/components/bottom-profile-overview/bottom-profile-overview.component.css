@@ -1,0 +1,13 @@
+.profile-img{
+    border-radius: 50%;
+    width: 50px;
+}
+.section-profile{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.menu-profile{
+    text-align: center;
+}

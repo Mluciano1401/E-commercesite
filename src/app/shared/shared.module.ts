@@ -12,6 +12,11 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
+import { BottomProfileOverviewComponent } from './components/bottom-profile-overview/bottom-profile-overview.component';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatListModule} from '@angular/material/list';
+import { HeaderComponent } from './components/header/header.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,9 @@ import {MatDividerModule} from '@angular/material/divider';
     SidebarComponent,
     FooterComponent,
     CarouselComponent,
-    GenericSectionComponent
+    GenericSectionComponent,
+    BottomProfileOverviewComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +35,10 @@ import {MatDividerModule} from '@angular/material/divider';
     MatButtonModule,
     MatIconModule,       
     MatToolbarModule,
+    MatDialogModule,
     MatDividerModule,
+    MatListModule,
+    MatBottomSheetModule,
     MatSidenavModule
   ],
   exports: [
@@ -36,6 +46,7 @@ import {MatDividerModule} from '@angular/material/divider';
     SidebarComponent,
     FooterComponent,
     CarouselComponent,
+    HeaderComponent,
     GenericSectionComponent
   ]
 })
