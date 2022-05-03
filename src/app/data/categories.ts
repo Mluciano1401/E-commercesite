@@ -26,7 +26,7 @@ export const Dataraw = {
             "urlImg": "../../../../assets/images/The+Kind+Store.jpg"
         }
     ],
-    "menu":[
+    "menu1":[
         {
             "url":"",
             "name":"Categories"
@@ -37,7 +37,18 @@ export const Dataraw = {
         },
         {
             "url":"",
-            "name":"Offers"
+            "name":"Favorites"
+        }
+    ],
+    "menu2":[
+        {
+            "url":"",
+            "name":"My products"
+        },
+        {
+            "url":"",
+            "name":"My offers"
         }
     ]
+
 }

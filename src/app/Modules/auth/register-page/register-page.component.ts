@@ -48,18 +48,22 @@ export class RegisterPageComponent implements OnInit {
       username: this.userForm.get('username')?.value,
       password: this.userForm.get('password')?.value,
       role: this.userForm.get('role')?.value,
+      money: 0,
     }
     this.userService.postUser(USER).subscribe((user) => {
-      if(user.role=="seller"){
+      if(user.dataUser.role=="seller"){
         this.router.navigate(['/home/seller']);
       }
       else{
         this.router.navigate(['/home/buyer']);
       }
-
+      sessionStorage.setItem('User',JSON.stringify(user.dataUser));
     }, error => {
       this.userForm.reset();
     })
+  }
+  getdata(user:any){
+    this.userService.getdatauser(user)
   }
 
 }

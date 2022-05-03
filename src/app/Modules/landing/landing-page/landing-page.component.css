@@ -4,7 +4,6 @@
 .toolbar{
     padding: 42px;
     margin: 0;
-    background-color: #ffffff;
     color: rgb(44, 60, 70);
     display: flex;
     justify-content: space-between;

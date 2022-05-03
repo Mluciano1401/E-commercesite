@@ -5,15 +5,15 @@
           <mat-card-title>{{datacard.name}}</mat-card-title>
           <mat-card-subtitle>{{datacard.description}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="{{datacard.urlImg}}" alt="">
+        <img (click)="getproduct(datacard._id)" mat-card-image src="{{datacard.urlImg}}" alt="">
         <mat-card-content>
           <p>
             ${{datacard.price}}
           </p>
         </mat-card-content>
         <mat-card-actions class="mat-card-actions">
-          <button mat-icon-button aria-label="Example icon button with a heart icon">
-            <mat-icon color="#bdbdbd">favorite_border</mat-icon>
+          <button mat-icon-button  (click)="changeColor()" color={{color}} aria-label="Example icon button with a heart icon">
+            <mat-icon>favorite_border</mat-icon>
           </button>
           <button mat-raised-button color="primary">buy</button>
         </mat-card-actions>
@@ -23,7 +23,7 @@
 <div *ngIf="mode==='medium'" class="card-medium">
     <mat-card class="example-card">   
         <img mat-card-image src="{{datacard.urlImg}}" alt="">      
-        <mat-card-content>
+        <mat-card-content (click)="getproduct(datacard._id)">
             <mat-card-title>{{datacard.name}}</mat-card-title>
         </mat-card-content>
         <mat-card-actions class="mat-card-actions">
@@ -36,7 +36,7 @@
 </div>
 <!-- small card design -->
 <div *ngIf="mode==='small'" class="card-small">
-    <mat-card class="example-card">
+    <mat-card  (click)=" getcategort(datacard.name)" class="example-card">
         <img mat-card-image src="{{datacard.urlImg}}" alt="" class="circle-img">
         <mat-card-content>
             <mat-card-title>{{datacard.name}}</mat-card-title>
@@ -51,4 +51,16 @@
           <mat-card-title>{{datacard.username}}</mat-card-title>
       </mat-card-content>
   </mat-card> 
+</div>
+<!-- editable card design -->
+<div *ngIf="mode==='editable'" class="card-editable">
+  <mat-card class="example-card">    
+    <button (click)="openmodal(datacard._id)" class="btn-edit" mat-icon-button aria-label="Example icon button with a heart icon">
+      <mat-icon>edit</mat-icon>
+    </button>  
+      <img mat-card-image src="{{datacard.urlImg}}" alt="">      
+      <mat-card-content (click)="getproduct(datacard._id)">
+          <mat-card-title>{{datacard.name}}</mat-card-title>
+      </mat-card-content>
+  </mat-card>
 </div>

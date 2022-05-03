@@ -25,10 +25,7 @@
 .toolbar{
   padding: 42px;
   margin: 0;
-  background-color: #00467F;
-  background: -webkit-linear-gradient(to right, #A5CC82, #00467F);
-  background: linear-gradient(to right, #A5CC82, #00467F);
-  color: white;
+  color: rgb(44, 60, 70);
   display: flex;
   justify-content: space-between;
 }

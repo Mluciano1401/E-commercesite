@@ -6,10 +6,11 @@ import { HomeSellerComponent } from './home-seller/home-seller.component';
 
 const routes: Routes = [
   {path: 'buyer', component:HomeBuyerComponent},
-  {path: 'buyer/:id', component:SectionproductsComponent},
+  {path: 'supplier/:id', component:SectionproductsComponent},
+  {path: 'product/:id', component:SectionproductsComponent},
+  {path: 'category/:id', component:SectionproductsComponent},
   {path: 'seller', component:HomeSellerComponent}
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

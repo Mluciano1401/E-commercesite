@@ -11,13 +11,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ProfileComponent } from './profile/profile.component';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import { EditProductComponent } from './home-sections/edit-product/edit-product.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     HomeSellerComponent,
     HomeBuyerComponent,
     SectionproductsComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProductComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +28,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDividerModule,
     MatIconModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatButtonModule,
     SharedModule
   ]

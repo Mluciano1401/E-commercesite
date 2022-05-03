@@ -8,6 +8,7 @@ import { User } from 'src/app/models/user.model';
 })
 export class AuthService {
   url="http://localhost:4000/api/auth/"
+  storageuser={}
   constructor(
     private http: HttpClient
   ) { }
@@ -16,5 +17,8 @@ export class AuthService {
   }
   loginUser(data:any): Observable<any>{
     return this.http.post(`${this.url}login`, data)
+  }
+  getdatauser(data:any){
+    this.storageuser = data;
   }
 }

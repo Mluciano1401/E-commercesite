@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./generic-section.component.css']
 })
 export class GenericSectionComponent implements OnInit {
-  @Input() mode: 'small' | 'big' | 'medium' | 'profile' = 'small';
+  @Input() mode: 'small' | 'big' | 'medium' | 'profile'  | 'editable'= 'small';
   @Input() data:Array<any>=[];
   @Input() title:string=" ";
   cols:number = 0;

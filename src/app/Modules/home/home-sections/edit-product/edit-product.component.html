@@ -1,0 +1,46 @@
+<mat-dialog-content>
+    <div class="container">
+        <div class="card-body example-form">
+            <div class="title">
+              <span>{{title}}</span>  
+            </div>
+            <!-- [formGroup]="productForm" -->
+            <form class="form-content">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput formControlName="name">
+                    <mat-error *ngIf="productForm.get('name')?.invalid">
+                        This field <strong>is required</strong>
+                    </mat-error>                           
+                </mat-form-field> 
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Description</mat-label>                 
+                    <input type="text"  matInput formControlName="description">
+                    <mat-error *ngIf="productForm.get('description')?.invalid">
+                        This field <strong>is required</strong>
+                      </mat-error>
+                </mat-form-field>                            
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Category</mat-label>
+                    <input type="text" matInput formControlName="category">
+                    <mat-error *ngIf="productForm.get('category')?.invalid">
+                        This field <strong>is required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Price</mat-label>
+                    <input type="number" matInput formControlName="price">
+                    <mat-error *ngIf="productForm.get('price')?.invalid">
+                        This field <strong>is required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <div class="margin-button">
+                    <button routerLink="/" mat-raised-button>cancel</button>
+                    <button type="submit" (click)="submit()" mat-raised-button color="primary" [disabled]="productForm.invalid">submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</mat-dialog-content>
+
+

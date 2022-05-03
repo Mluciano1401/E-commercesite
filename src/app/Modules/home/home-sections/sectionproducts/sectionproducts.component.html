@@ -3,17 +3,33 @@
         <mat-icon>keyboard_backspace</mat-icon>
     </button>
     <div class="profile-section">
-        <div>
-            <img class="profile-img" src="../../../assets/images/profileImg/img_568656.png" alt="">
+        <div *ngIf="isseller">
+            <div *ngIf="seller.urlImg == null">
+                <img class="profile-img" src="../../../assets/images/profileImg/img_568656.png" alt="">
+            </div>
+            <div *ngIf="seller.urlImg != null">
+                <img class="profile-img" src="../../../assets/images/profileImg/{{seller.urlImg}}" alt="">
+            </div>            
+        </div>
+        <div *ngIf="!isseller">
+            <img class="profile-img" src="{{seller.urlImg}}" alt="">
         </div>
         <div class="profile-description">
-            <h1>{{seller.username}}</h1>
+            <h1 *ngIf="isseller">{{seller.username}}</h1>
             <h2>{{seller.name}} {{seller.lastname}}</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, voluptatem voluptatibus quaerat pariatur omnis, blanditiis aliquid ipsum a doloremque iure consectetur officia modi, veritatis voluptates unde repellendus reprehenderit. Optio, dolores!</p>
-            <div class="profile-section-actions">
-                <button mat-icon-button aria-label="Example icon button with a heart icon">
+            <p *ngIf="isseller">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, voluptatem voluptatibus quaerat pariatur omnis, blanditiis aliquid ipsum a doloremque iure consectetur officia modi, veritatis voluptates unde repellendus reprehenderit. Optio, dolores!</p>
+            <p *ngIf="!isseller">{{seller.description}}</p>
+            <div  class="profile-section-actions" *ngIf="!isseller && !iscategory">
+                <h2>${{seller.price}}</h2>
+                <button mat-icon-button (click)="changeColor()" color={{color}} aria-label="Example icon button with a heart icon">
                     <mat-icon>favorite_border</mat-icon>
-                  </button>
+                </button>
+                <button mat-raised-button color="primary">buy</button>
+            </div >
+            <div class="profile-section-actions" *ngIf="isseller && !iscategory">
+                <button mat-icon-button (click)="changeColor()" color={{color}} aria-label="Example icon button with a heart icon">
+                    <mat-icon>favorite_border</mat-icon>
+                    </button>
                 <button  mat-icon-button aria-label="Example icon button">
                     <mat-icon>message</mat-icon>
                 </button>
@@ -26,6 +42,6 @@
         <app-generic-section [title]="'Products'" [data]="products" [mode]="'big'" [rowh]=400></app-generic-section>
     </div>    
     <div class="info" *ngIf="products.length == 0">
-        <mat-icon>info</mat-icon><h3>No found products by this seller</h3>
+        <mat-icon>info</mat-icon><h3>No found products</h3>
     </div>
 </div>

@@ -1,10 +1,11 @@
 .toolbar{
     padding: 42px;
     margin: 0;
+    color: white;
     background-color: #00467F;
     background: -webkit-linear-gradient(to right, #A5CC82, #00467F);
     background: linear-gradient(to right, #A5CC82, #00467F);
-    color: white;
+
     display: flex;
     justify-content: space-between;
 }

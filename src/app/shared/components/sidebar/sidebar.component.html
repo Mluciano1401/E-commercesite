@@ -9,15 +9,19 @@
         </div>
       </mat-toolbar>
       <div class="content-menu" *ngFor="let item of menu">
-        <a href="{{item.url}}">{{item.name}}</a>
+        <a href="#{{item.url}}">{{item.name}}</a>
       </div>
     </mat-drawer>
     <mat-drawer-content>
       <mat-toolbar class="toolbar">          
         <mat-icon (click)="drawer.toggle()">menu</mat-icon>      
         <span class="example-spacer"></span>
-        <button mat-icon-button (click)="openBottomSheet()">
-          <img class="profile-img" src="../../../assets/images/profileImg/img_568656.png" alt="">
+        <span>Hello, {{user.username}}</span>
+        <button *ngIf="user.urlImg != undefined" mat-icon-button (click)="openBottomSheet()">
+          <img class="profile-img" src="../../../assets/images/profileImg/{{user.urlImg}}" alt="">
+        </button>
+        <button *ngIf="user.urlImg == undefined" mat-icon-button (click)="openBottomSheet()">
+          <img class="profile-img" src="../../../assets/images/profileImg/profile-img-0.png" alt="">
         </button>
       </mat-toolbar>        
       <div class="categories-content">      
@@ -26,7 +30,10 @@
     </mat-drawer-content>
 </mat-drawer-container>
 <ng-template #sectionbuyer>
-  <app-generic-section [title]="'The most recent'" [data]="data" [mode]="'big'" [rowh]=500></app-generic-section>
-  <app-generic-section [title]="'Suppliers'" [data]="seller" [mode]="'profile'" [rowh]=325></app-generic-section>
-  <app-generic-section [title]="'Offers'" [data]="categories" [mode]="'small'" [rowh]=325></app-generic-section>
+  
+  <app-generic-section [title]="titless[0]" [data]="data" [mode]="mode" [rowh]=500></app-generic-section>
+ 
+  <app-generic-section [title]="titless[1]" [data]="seller" [mode]="'profile'" [rowh]=325></app-generic-section>
+  
+  <app-generic-section [title]="titless[2]" [data]="categories" [mode]="'small'" [rowh]=325></app-generic-section>
 </ng-template>

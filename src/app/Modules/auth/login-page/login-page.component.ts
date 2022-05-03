@@ -33,15 +33,20 @@ export class LoginPageComponent implements OnInit {
       password: this.userLogForm.get('password')?.value
     }
     this.userService.loginUser(login).subscribe((user) => {
-      if(user.role=="seller"){
-        this.router.navigate(['/home/seller']);
+      if(user.dataUser.role=="seller"){
+        this.router.navigate(['/home/seller'],);
       }
       else{
-        this.router.navigate(['/home/buyer']);
+        this.router.navigate(['/home/buyer'],);
       }
+      this.getdata(user.dataUser);
+      sessionStorage.setItem('User',JSON.stringify(user.dataUser));
     },  error => {
       this.hasError = true;
       this.userLogForm.reset();
     })
+  }
+  getdata(user:any){
+    this.userService.getdatauser(user)
   }
 }

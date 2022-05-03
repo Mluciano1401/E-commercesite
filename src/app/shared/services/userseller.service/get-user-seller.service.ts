@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
 })
 export class GetUserSellerService {
   urlAPI="http://localhost:4000/api/user/"
-  seller:any;
   constructor(
     private http: HttpClient
   ) { }

@@ -8,3 +8,7 @@
 .section-generic{
     grid-template-columns: repeat(5, 1fr);
 }
+app-cards{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

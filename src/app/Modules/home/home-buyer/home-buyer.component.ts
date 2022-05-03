@@ -1,7 +1,10 @@
+import { User } from './../../../models/user.model';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/shared/services/products.service/product.service';
 import { GetUserSellerService } from 'src/app/shared/services/userseller.service/get-user-seller.service';
 import { Dataraw } from '../../../data/categories';
+import { AuthService } from '../../auth/services/auth.service';
 @Component({
   selector: 'app-home-buyer',
   templateUrl: './home-buyer.component.html',
@@ -11,15 +14,23 @@ export class HomeBuyerComponent implements OnInit {
   categories:Array<any>=Dataraw.category; 
   //categories:Array<any>=[]
   sellers:Array<any>=[];
-  menu:Array<any>=Dataraw.menu;
+  menu:Array<any>=Dataraw.menu1;
   //menu:Array<any>=[];
+  titles:Array<string>=["The most recent","Suppliers","Category"];
+  user:any = sessionStorage.getItem("User")
   products:Array<any>=[];
   constructor(
     private sellerService: GetUserSellerService,
-    private Productservice: ProductService
-  ) { }
+    private aRouter: ActivatedRoute,
+    private Productservice: ProductService,
+    private userService: AuthService
+  ) { 
+   
+  }
 
   ngOnInit(): void {
+    this.user = JSON.parse(this.user)
+    this.user
     this.categories;
     this.getseller()
     this.getproducts()
