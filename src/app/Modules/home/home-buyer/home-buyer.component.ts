@@ -1,16 +1,15 @@
 import { User } from './../../../models/user.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/shared/services/products.service/product.service';
 import { GetUserSellerService } from 'src/app/shared/services/userseller.service/get-user-seller.service';
 import { Dataraw } from '../../../data/categories';
-import { AuthService } from '../../auth/services/auth.service';
 @Component({
   selector: 'app-home-buyer',
   templateUrl: './home-buyer.component.html',
   styleUrls: ['./home-buyer.component.css']
 })
-export class HomeBuyerComponent implements OnInit {
+export class HomeBuyerComponent implements OnInit, OnDestroy {
   categories:Array<any>=Dataraw.category; 
   //categories:Array<any>=[]
   sellers:Array<any>=[];
@@ -23,7 +22,6 @@ export class HomeBuyerComponent implements OnInit {
     private sellerService: GetUserSellerService,
     private aRouter: ActivatedRoute,
     private Productservice: ProductService,
-    private userService: AuthService
   ) { 
    
   }
@@ -48,6 +46,9 @@ export class HomeBuyerComponent implements OnInit {
     this.Productservice.getproducts().subscribe((data)=>{
       this.products = data
     })
+  }
+  ngOnDestroy(): void {
+    console.log("I'm dead")
   }
 
 }

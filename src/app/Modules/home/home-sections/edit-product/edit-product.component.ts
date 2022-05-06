@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProductService } from 'src/app/shared/services/products.service/product.service';
+import { Dataraw } from '../../../../data/categories';
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -10,23 +11,71 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class EditProductComponent implements OnInit {
   title:string="Create Product";
   productForm!: FormGroup;
+  categories:Array<any>=Dataraw.category; 
+  user:any = sessionStorage.getItem("User")
   constructor(
+    private Productservice: ProductService,
     @Inject(MAT_DIALOG_DATA) private data: { id:string, title: string },
-    private fb: FormBuilder) { }
+    private matDialogRef: MatDialogRef<EditProductComponent>
+    ) { }
 
   ngOnInit(): void {
     this.form()
+    if(this.data){
+      this.title = this.data.title
+      this.getdataAPI(this.data.id)
+    }
+    this.user = JSON.parse(this.user)
   }
   private form(): void{
     this.productForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       category: new FormControl('', [Validators.required]),
-      price: new FormControl('', [Validators.required])
+      price: new FormControl('', [Validators.required]),
+      urlimg: new FormControl('', [Validators.required])
     })
   }
-  submit(){
-
+  getdataAPI(id:string){
+    this.Productservice.getproduct(id).subscribe((data)=>{
+      this.productForm.get('name')?.setValue(data.name)
+      this.productForm.get('description')?.setValue(data.description)
+      this.productForm.get('category')?.setValue(data.category)
+      this.productForm.get('price')?.setValue(data.price)
+      this.productForm.get('urlimg')?.setValue(data.urlImg)
+    })
+  }
+  getdataform(){
+    let dataproduct = {
+      name: this.productForm.get('name')?.value,
+      description: this.productForm.get('description')?.value,
+      urlImg: this.productForm.get('urlimg')?.value,
+      price: this.productForm.get('price')?.value,
+      category: this.productForm.get('category')?.value,
+      supplier: this.user.username,
+      
+    }
+    return dataproduct
+  }
+  save(){
+    let product = this.getdataform()
+    if(this.data){
+      this.Productservice.updateproduct(this.data.id,product).subscribe((data)=>{
+        console.log("the product has been successfully updated")
+        this.close()
+      })
+    }
+    else{
+      this.Productservice.createproduct(product).subscribe((data)=>{
+        console.log("the product has been successfully created")
+        console.log(data)
+        this.close()
+      })
+    }
+    
+  }
+  close(){
+    this.matDialogRef.close();
   }
 
 }

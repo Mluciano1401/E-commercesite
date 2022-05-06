@@ -22,7 +22,7 @@ export class ProductService {
   getproductsbycategory(data: string): Observable<any>{
     return this.http.get(`${this.urlAPI}category/${data}`)
   }
-  updateproduct(id:string, data:string): Observable<any>{
+  updateproduct(id:string, data:any): Observable<any>{
     return this.http.put(`${this.urlAPI}${id}`, data)
   }
   createproduct(data:any): Observable<any>{

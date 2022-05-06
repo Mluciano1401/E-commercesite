@@ -17,6 +17,8 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatListModule} from '@angular/material/list';
 import { HeaderComponent } from './components/header/header.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { BoxShopComponent } from './components/box-shop/box-shop.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     CarouselComponent,
     GenericSectionComponent,
     BottomProfileOverviewComponent,
-    HeaderComponent
+    HeaderComponent,
+    BoxShopComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +42,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDividerModule,
     MatListModule,
     MatBottomSheetModule,
+    MatBadgeModule,
     MatSidenavModule
   ],
   exports: [

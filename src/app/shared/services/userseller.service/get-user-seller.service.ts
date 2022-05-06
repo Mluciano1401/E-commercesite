@@ -13,10 +13,16 @@ export class GetUserSellerService {
   getSellers(): Observable<any>{
     return this.http.get(`${this.urlAPI}`)
   }
-  getSellerbyAPI(id:string){
+  getSellerbyAPI(id:string):Observable<any>{
     return this.http.get(`${this.urlAPI}${id}`)
+  }
+  getuserbyusername(username:string):Observable<any>{
+    return this.http.get(`${this.urlAPI}username/${username}`)
   }
   updateuser(id:String, data:any): Observable<any>{
     return this.http.put(`${this.urlAPI}${id}`, data)
+  }
+  updatemoney(id:string, data:any):Observable<any>{
+    return this.http.patch(`${this.urlAPI}money/${id}`, data)
   }
 }

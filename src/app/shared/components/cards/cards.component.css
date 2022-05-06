@@ -24,13 +24,15 @@
 .card-medium{
     max-width: 220px;
 }
-mat-card-image{
-    max-width: 65%;
+.box-img{
+    width: 80%;
+    display: flex;
+    justify-content: center;
 }
 .card-editable{
     max-width: 200px;
 }
-.btn-edit{
+.card-edit{
     display: flex;
-    align-self: flex-end;
+    justify-content: flex-end;
 }

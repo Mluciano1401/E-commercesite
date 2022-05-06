@@ -30,7 +30,11 @@
     </mat-drawer-content>
 </mat-drawer-container>
 <ng-template #sectionbuyer>
-  
+  <div *ngIf="user.role == 'seller'" class="add-box">
+    <button (click)="openmodal()" mat-mini-fab color="white" aria-label="Example icon button with a menu icon">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
   <app-generic-section [title]="titless[0]" [data]="data" [mode]="mode" [rowh]=500></app-generic-section>
  
   <app-generic-section [title]="titless[1]" [data]="seller" [mode]="'profile'" [rowh]=325></app-generic-section>

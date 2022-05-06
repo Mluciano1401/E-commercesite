@@ -1,10 +1,11 @@
 <div class="menu-profile">
     <mat-nav-list>
         <div class="section-profile">
-            <img class="profile-img" src="../../../assets/images/profileImg/img_568656.png" alt="">
+            <img *ngIf="user.urlImg == undefined" class="profile-img" src="../../../assets/images/profileImg/profile-img-0.png" alt="">
+            <img *ngIf="user.urlImg != undefined" class="profile-img" src="../../../assets/images/profileImg/{{user.urlImg}}" alt="">
             <div>
-                <h3 mat-line>nombre usuario</h3>
-                <h3 mat-line>nombre completo</h3>
+                <h3 mat-line>{{user.username}}</h3>
+                <h3 mat-line>{{user.name}} {{user.lastname}}</h3>
             </div>
         </div>          
         <mat-divider></mat-divider>  

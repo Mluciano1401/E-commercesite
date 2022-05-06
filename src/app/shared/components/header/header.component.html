@@ -2,17 +2,21 @@
     <span>
         <div class="example-button-container">
         <button mat-mini-fab color="white" aria-label="Example icon button with a menu icon">
-          <!-- <mat-icon >perm_contact_calendar</mat-icon> -->
-          F
+          <mat-icon >facebook</mat-icon>
         </button>
         <button mat-mini-fab color="white" aria-label="Example icon button with a menu icon">
-            <!-- <mat-icon>perm_contact_calendar</mat-icon> -->
-            t
-        </button>
+          <mat-icon>messenger</mat-icon>
+      </button>
       </div>
     </span>
     <span class="example-spacer"></span>
     <span></span>
-    <span *ngIf="user.money != null">${{user['money']}}</span>
-    <span *ngIf="user.money == null">$0.0</span>
+    <div *ngIf="user != undefined">
+      <span *ngIf="user.role == 'seller'">${{user.money}}</span>
+      <div *ngIf="user.role == 'buyer'">
+        <button mat-icon-button (click)="openhistorymodal()" aria-label="Example icon button with a heart icon">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
+      </div>
+    </div>
 </mat-toolbar>

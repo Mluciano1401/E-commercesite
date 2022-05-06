@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
+import { EditProductComponent } from 'src/app/Modules/home/home-sections/edit-product/edit-product.component';
 import { BottomProfileOverviewComponent } from '../bottom-profile-overview/bottom-profile-overview.component';
 
 @Component({
@@ -28,7 +29,13 @@ export class SidebarComponent implements OnInit {
   openBottomSheet(){
     this.matDialog.open(BottomProfileOverviewComponent, {
       width: '40vw',
-      data: {}
+      data: {user: this.user}
+    });
+  }
+  openmodal(){
+    this.matDialog.open(EditProductComponent, {
+      width: '40vw',
+      //data: { title: "Modify Product"}
     });
   }
 }

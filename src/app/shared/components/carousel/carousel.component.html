@@ -2,10 +2,10 @@
 <div class="container">
 
     <!-- Full-width images with number text -->
-    <div *ngFor="let data of datacarousel">
-        <div class="mySlides">
-            <div class="numbertext">{{data.id}} /{{datacarousel.length}}</div>
-              <img  src="{{data.url}}" style="width:100%" alt="">
+    <div class="contentSlides">
+        <div *ngFor="let data of datacarousel" class="mySlides">
+          <div class="numbertext">{{data.id}} /{{datacarousel.length}}</div>
+            <img  src="{{data.url}}" style="width:100%" alt="{{data.text}}">
         </div>
     </div>
     <!-- Next and previous buttons -->
@@ -16,11 +16,10 @@
     <div class="caption-container">
       <p id="caption"></p>
     </div>
-  
     <!-- Thumbnail images -->
     <div class="row">
-      <div class="column" *ngFor="let data of datacarousel">
-        <img class="demo cursor" src="{{data.url}}" style="width:100%" (click)="currentSlide(data.id)" alt="">
+      <div class="column"  *ngFor="let data of datacarousel">       
+        <img class="demo cursor" src="{{data.url}}" style="width:100%" (click)="currentSlide(data.id)" alt="{{data.text}}">
       </div>
     </div>
 </div>

@@ -1,0 +1,46 @@
+<!-- Container for the image gallery -->
+<div class="container">
+
+    <!-- Full-width images with number text -->
+    <div class="contentSlides">
+        <div class="mySlides">
+          <div class="numbertext">1/4</div>
+            <img  src="https://d1ih8jugeo2m5m.cloudfront.net/2021/06/Ecommerce-Thumbnail.jpg" style="width:100%" alt="">
+        </div>
+        <div class="mySlides">
+            <div class="numbertext">2/4</div>
+              <img  src="https://www.imagar.com/wp-content/uploads/2020/07/Desarrollo-web-ecommerce-1.jpg" style="width:100%" alt="">
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">3/4</div>
+              <img  src="https://directivosygerentes.es/wp-content/uploads/2020/03/Ecommerce.jpg" style="width:100%" alt="">
+          </div>
+          <div class="mySlides">
+            <div class="numbertext">4/4</div>
+              <img  src="https://s3.amazonaws.com/cdn.wp.m4ecmx/wp-content/uploads/2019/04/25160328/El-crecimiento-del-eCommerce-en-M%C3%A9xico-compressor.jpg" style="width:100%" alt="">
+          </div>
+    </div>
+    <!-- Next and previous buttons -->
+    <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+    <a class="next" (click)="plusSlides(1)">&#10095;</a>
+  
+    <!-- Image text -->
+    <div class="caption-container">
+      <h2 id="caption"></h2>
+    </div>
+    <!-- Thumbnail images -->
+    <div class="row">
+      <div class="column">       
+        <img class="demo cursor" src="https://d1ih8jugeo2m5m.cloudfront.net/2021/06/Ecommerce-Thumbnail.jpg" style="width:100%" (click)="currentSlide(1)" alt="welcome">
+      </div>
+      <div class="column">       
+        <img class="demo cursor" src="https://www.imagar.com/wp-content/uploads/2020/07/Desarrollo-web-ecommerce-1.jpg" style="width:100%" (click)="currentSlide(2)" alt="b">
+      </div>
+      <div class="column">       
+        <img class="demo cursor" src="https://directivosygerentes.es/wp-content/uploads/2020/03/Ecommerce.jpg" style="width:100%" (click)="currentSlide(3)" alt="c">
+      </div>
+      <div class="column">       
+        <img class="demo cursor" src="https://s3.amazonaws.com/cdn.wp.m4ecmx/wp-content/uploads/2019/04/25160328/El-crecimiento-del-eCommerce-en-M%C3%A9xico-compressor.jpg" style="width:100%" (click)="currentSlide(4)" alt="d">
+      </div>
+    </div>
+</div>

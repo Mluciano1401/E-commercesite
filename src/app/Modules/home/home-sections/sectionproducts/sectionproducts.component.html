@@ -18,17 +18,20 @@
             <h1 *ngIf="isseller">{{seller.username}}</h1>
             <h2>{{seller.name}} {{seller.lastname}}</h2>
             <p *ngIf="isseller">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, voluptatem voluptatibus quaerat pariatur omnis, blanditiis aliquid ipsum a doloremque iure consectetur officia modi, veritatis voluptates unde repellendus reprehenderit. Optio, dolores!</p>
-            <p *ngIf="!isseller">{{seller.description}}</p>
+            <div *ngIf="!isseller && !iscategory">
+                <p>{{seller.description}}</p>
+                <span><strong>Supplier: </strong>{{seller.supplier}}</span>
+            </div>
             <div  class="profile-section-actions" *ngIf="!isseller && !iscategory">
-                <h2>${{seller.price}}</h2>
+                <h2>{{seller.price| currency:"USD"}}</h2>
                 <button mat-icon-button (click)="changeColor()" color={{color}} aria-label="Example icon button with a heart icon">
-                    <mat-icon>favorite_border</mat-icon>
+                    <mat-icon>favorite</mat-icon>
                 </button>
                 <button mat-raised-button color="primary">buy</button>
             </div >
             <div class="profile-section-actions" *ngIf="isseller && !iscategory">
                 <button mat-icon-button (click)="changeColor()" color={{color}} aria-label="Example icon button with a heart icon">
-                    <mat-icon>favorite_border</mat-icon>
+                    <mat-icon>favorite</mat-icon>
                     </button>
                 <button  mat-icon-button aria-label="Example icon button">
                     <mat-icon>message</mat-icon>

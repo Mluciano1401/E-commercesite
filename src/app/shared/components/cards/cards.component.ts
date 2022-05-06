@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { EditProductComponent } from 'src/app/Modules/home/home-sections/edit-product/edit-product.component';
+import { PurchaseService } from '../../services/purchaseService/purchase.service';
+import { GetUserSellerService } from '../../services/userseller.service/get-user-seller.service';
 
 @Component({
   selector: 'app-cards',
@@ -10,12 +12,15 @@ import { EditProductComponent } from 'src/app/Modules/home/home-sections/edit-pr
 })
 export class CardsComponent implements OnInit {
   @Input() mode: 'small' | 'big' | 'medium' | 'profile' | 'editable' = 'small';
-  @Input() datacard= {_id: '0', name : "", username:"", lastname:"", price: "", description: "", urlImg:""};
+  @Input() datacard= {_id: '0', name : "", username:"", lastname:"", price: 0, description: "", urlImg:"", supplier: ""};
   urlImg:string = "";
-  color: string ="#bdbdbd";
+  user:any = sessionStorage.getItem("User");
+  color:any ="#bdbdbd";
   is_liked:boolean = false;
   constructor(private router: Router,
-    private matDialog: MatDialog) { }
+    public matDialog: MatDialog,
+    private purchaseService: PurchaseService,
+    private sellerService: GetUserSellerService) { }
 
   ngOnInit(): void {
     this.geturlImg()
@@ -53,6 +58,29 @@ export class CardsComponent implements OnInit {
       width: '40vw',
       data: {id: id, title: "Modify Product"}
     });
+  }
+  buyprodut(price:number,supplier:string, idproduct:string){
+    var dataraw_user = JSON.parse(this.user);
+    var money = {
+      money: dataraw_user.money + price}
+    this.sellerService.updatemoney(dataraw_user.id,money).subscribe((data)=>{
+      //console.log(data)
+    })
+    this.sellerService.getuserbyusername(supplier).subscribe((data)=>{
+    money = { money: data[0].money + price}
+    this.sellerService.updatemoney(data[0]._id,money).subscribe((dat)=>{
+        //console.log(dat)
+      }) 
+    })
+    var datas = {
+      customer: dataraw_user.username,
+      product: idproduct,
+      price: price,
+      seller: supplier
+    }
+    this.purchaseService.processpurchase(datas).subscribe((data)=>{
+      console.log(data)
+    })
   }
 
 }
