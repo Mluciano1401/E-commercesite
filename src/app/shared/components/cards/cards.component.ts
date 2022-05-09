@@ -61,11 +61,7 @@ export class CardsComponent implements OnInit {
   }
   buyprodut(price:number,supplier:string, idproduct:string){
     var dataraw_user = JSON.parse(this.user);
-    var money = {
-      money: dataraw_user.money + price}
-    this.sellerService.updatemoney(dataraw_user.id,money).subscribe((data)=>{
-      //console.log(data)
-    })
+    var money;
     this.sellerService.getuserbyusername(supplier).subscribe((data)=>{
     money = { money: data[0].money + price}
     this.sellerService.updatemoney(data[0]._id,money).subscribe((dat)=>{

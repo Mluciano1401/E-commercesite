@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../../services/products.service/product.service';
 import { PurchaseService } from '../../services/purchaseService/purchase.service';
+import { BoxShopComponent } from '../box-shop/box-shop.component';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +14,7 @@ export class HeaderComponent implements OnInit {
   datapurchase:Array<any>=[]
   @Input() iscolorblack:boolean=false;
   constructor(
+    public matDialog: MatDialog,
     private purchaseService: PurchaseService,
     private Productservice: ProductService) { 
   }
@@ -23,11 +26,14 @@ export class HeaderComponent implements OnInit {
     }
   }
   gethistory(){
-    this.purchaseService.gethistory(this.user.username).subscribe((data)=>{
+    this.purchaseService.gethistory(this.user.username).subscribe((data: Array<any>)=>{
       this.datapurchase = data
     })
   }
   openhistorymodal(){
-    console.log(this.datapurchase)
+    this.matDialog.open(BoxShopComponent, {
+      width: '40vw',
+      data: {data: this.datapurchase}
+    });
   }
 }

@@ -1,0 +1,16 @@
+.profile-img{
+    border-radius: 50%;
+    width: 60px;
+}
+.contain-box-shop{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}
+.spacing-box{
+    margin-bottom:18px;
+}

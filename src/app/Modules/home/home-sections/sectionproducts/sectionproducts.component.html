@@ -32,7 +32,7 @@
             <div class="profile-section-actions" *ngIf="isseller && !iscategory">
                 <button mat-icon-button (click)="changeColor()" color={{color}} aria-label="Example icon button with a heart icon">
                     <mat-icon>favorite</mat-icon>
-                    </button>
+                </button>
                 <button  mat-icon-button aria-label="Example icon button">
                     <mat-icon>message</mat-icon>
                 </button>
@@ -42,7 +42,7 @@
     </div>
     <mat-divider></mat-divider>  
     <div class="content" *ngIf="products.length > 0">
-        <app-generic-section [title]="'Products'" [data]="products" [mode]="'big'" [rowh]=400></app-generic-section>
+        <app-generic-section [title]="'Related products'" [data]="products" [mode]="'big'" [rowh]=400></app-generic-section>
     </div>    
     <div class="info" *ngIf="products.length == 0">
         <mat-icon>info</mat-icon><h3>No found products</h3>
