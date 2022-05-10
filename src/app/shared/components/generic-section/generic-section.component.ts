@@ -22,16 +22,16 @@ export class GenericSectionComponent implements OnInit {
     this.takeMeasures();
   }
   takeMeasures(){
-    if(this.scrWidth <= 550 && (this.mode == "medium" || this.mode == "big")){
+    if(this.scrWidth <= 580 && (this.mode == "medium" || this.mode == "big")){
       this.cols = 1;
     }
-    else if(this.scrWidth <= 920 && (this.scrWidth > 530) && (this.mode == "medium" || this.mode == "big") || this.mode == "editable"){
+    else if(this.scrWidth <= 920 && (this.scrWidth > 580) && (this.mode == "medium" || this.mode == "big") || this.mode == "editable"){
       this.cols = 2;
     }
     else{
       this.cols = 3;
     }
-    if(this.scrWidth <= 530 && (this.mode == "small"||this.mode == "profile")){
+    if(this.scrWidth <= 580 && (this.mode == "small"||this.mode == "profile")){
       this.cols = 2;
     }
   }

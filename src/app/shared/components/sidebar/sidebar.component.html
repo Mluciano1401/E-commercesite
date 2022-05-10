@@ -11,6 +11,7 @@
       <div class="content-menu" *ngFor="let item of menu">
         <a href="#{{item.url}}">{{item.name}}</a>
       </div>
+      <a class="content-menu" (click)="openmodal()" *ngIf="user.role == 'seller'">New product</a>
     </mat-drawer>
     <mat-drawer-content>
       <mat-toolbar class="toolbar">          
@@ -35,9 +36,9 @@
       <mat-icon>add</mat-icon>
     </button>
   </div>
-  <app-generic-section [title]="titless[0]" [data]="data" [mode]="mode" [rowh]=500></app-generic-section>
+  <app-generic-section id="{{menu[0].url}}" [title]="titless[0]" [data]="data" [mode]="mode" [rowh]=500></app-generic-section>
  
-  <app-generic-section [title]="titless[1]" [data]="seller" [mode]="'profile'" [rowh]=325></app-generic-section>
+  <app-generic-section id="{{menu[1].url}}" [title]="titless[1]" [data]="seller" [mode]="'profile'" [rowh]=325></app-generic-section>
   
-  <app-generic-section [title]="titless[2]" [data]="categories" [mode]="'small'" [rowh]=325></app-generic-section>
+  <app-generic-section id="#" [title]="titless[2]" [data]="categories" [mode]="'small'" [rowh]=325></app-generic-section>
 </ng-template>

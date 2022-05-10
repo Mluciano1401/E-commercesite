@@ -21,10 +21,9 @@
                     This field <strong>is required</strong>
                   </mat-error>
             </mat-form-field> 
-            <!-- <div [ngClass]="hasError? 'unsuccessful-request-message' : 'successful-request-message'"
-            *ngIf="requestResult.message"> 
-                {{ requestResult.message }} 
-            </div> -->
+            <mat-error *ngIf="hasError"> 
+                {{ error }} 
+            </mat-error>
             <div class="margin-button">
                 <button routerLink="/" mat-raised-button>cancel</button>
                 <button type="submit" (click)="submit()"  mat-raised-button color="primary" [disabled]="userLogForm.invalid">agree</button>

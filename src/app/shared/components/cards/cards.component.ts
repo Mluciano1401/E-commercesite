@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { EditProductComponent } from 'src/app/Modules/home/home-sections/edit-product/edit-product.component';
+import { ProductService } from '../../services/products.service/product.service';
 import { PurchaseService } from '../../services/purchaseService/purchase.service';
 import { GetUserSellerService } from '../../services/userseller.service/get-user-seller.service';
 
@@ -18,22 +19,12 @@ export class CardsComponent implements OnInit {
   color:any ="#bdbdbd";
   is_liked:boolean = false;
   constructor(private router: Router,
+    private Productservice: ProductService,
     public matDialog: MatDialog,
     private purchaseService: PurchaseService,
     private sellerService: GetUserSellerService) { }
 
   ngOnInit(): void {
-    this.geturlImg()
-  }
-  geturlImg(){
-    var urls = ["../../../assets/images/profileImg/profile-img-0.png",
-    "../../../assets/images/profileImg/profile-img-1.jpg",
-    "../../../assets/images/profileImg/profile-img-2.jpg",
-    "../../../assets/images/profileImg/profile-img-3.jpeg",
-    "../../../assets/images/profileImg/profile-img-4.jpg",
-    "../../../assets/images/profileImg/profile-img-5.jpg"]
-    let position = Math.floor(Math.random() * (6-0))+ 0;
-    this.urlImg=urls[position];
   }
   getproducts(id:string){
     this.router.navigate([`/home/supplier/${id}`]);
@@ -75,7 +66,14 @@ export class CardsComponent implements OnInit {
       seller: supplier
     }
     this.purchaseService.processpurchase(datas).subscribe((data)=>{
-      console.log(data)
+      this.router.navigate(['/home/seller'],)
+    }, (error)=>{
+      
+    })
+  }
+  remove(id:string){
+    this.Productservice.deleteProduct(id).subscribe(()=>{
+      this.router.navigate(['/home/seller'],)
     })
   }
 

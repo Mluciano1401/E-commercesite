@@ -7,7 +7,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
   @Input() datacarousel: Array<any> = [];
-  slideIndex:number = 1;
+  slideIndex:number = 0;
   @ViewChild('mySlide') mySlide!:  ElementRef;
   @ViewChild('Caption') Caption!: ElementRef;
   constructor(private el: ElementRef) { 

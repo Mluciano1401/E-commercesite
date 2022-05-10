@@ -9,14 +9,14 @@
             </div>
         </div>          
         <mat-divider></mat-divider>  
-        <a href="" mat-list-item >
+        <a href="/home/profile" mat-list-item >
           <span mat-line>View profile</span>
         </a>      
-        <a href="" mat-list-item >
+        <a href="/home/profile" mat-list-item >
             <span mat-line>Setting</span>
         </a>
         <mat-divider></mat-divider> 
-        <a href="/auth/login" mat-list-item >
+        <a (click)="logOut()" mat-list-item >
           <span mat-line>Log out</span>
         </a>
       </mat-nav-list>

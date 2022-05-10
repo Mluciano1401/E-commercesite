@@ -21,7 +21,6 @@ export class HomeSellerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.user = JSON.parse(this.user)
     this.getproductsbyseller();
-    console.log("hello world!")
   }
   getproductsbyseller(){ 
     if(this.user != null){

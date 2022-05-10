@@ -19,6 +19,8 @@ import { HeaderComponent } from './components/header/header.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { BoxShopComponent } from './components/box-shop/box-shop.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -41,9 +43,11 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatDialogModule,
     MatDividerModule,
     MatListModule,
+    MatFormFieldModule,
     MatBottomSheetModule,
     MatBadgeModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatInputModule,
   ],
   exports: [
     CardsComponent,

@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { User } from './../../../models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,  FormGroup, Validators } from '@angular/forms';
@@ -12,9 +13,12 @@ import { ConfirmedValidator } from './validator/confirmed.validator';
 export class RegisterPageComponent implements OnInit {
   userForm!: FormGroup;
   hide:boolean = true;
-  hide2:boolean = true;
-  message:string="";
-  constructor(private fb: FormBuilder,
+  hide2:boolean = true;  
+  hasError: boolean = false;
+  error:string=""
+  constructor(
+    private cookie:CookieService,
+    private fb: FormBuilder,
     private router: Router,
     private userService: AuthService) {}
 
@@ -41,7 +45,7 @@ export class RegisterPageComponent implements OnInit {
   })
   }
   submit(): void{
-    
+    this.hasError = false;
     const USER: User = {
       name: this.userForm.get('name')?.value,
       lastname: this.userForm.get('lastname')?.value,
@@ -51,14 +55,19 @@ export class RegisterPageComponent implements OnInit {
       money: 0,
     }
     this.userService.postUser(USER).subscribe((user) => {
+      const tokenSession = user.dataUser.accessToken
       if(user.dataUser.role=="seller"){
-        this.router.navigate(['/home/seller']);
+        this.cookie.set('tokenseller', tokenSession, 1, '/')
+        this.router.navigate(['/home/seller'],);
       }
       else{
-        this.router.navigate(['/home/buyer']);
+        this.cookie.set('tokenbuyer', tokenSession, 1, '/')
+        this.router.navigate(['/home/buyer'],);
       }
       sessionStorage.setItem('User',JSON.stringify(user.dataUser));
     }, error => {
+      this.hasError = true;
+      this.error = error.error;
       this.userForm.reset();
     })
   }

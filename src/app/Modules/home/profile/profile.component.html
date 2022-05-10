@@ -1,1 +1,39 @@
-<p>profile works!</p>
+<div class="container-profile">
+    <button mat-mini-fab color="gray" (click)="return()">
+        <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+    <div>
+        <section>
+            <button (click)="editable()" *ngIf="!isedit" mat-icon-button aria-label="Example icon button with a heart icon">
+                <mat-icon>settings</mat-icon>
+            </button> 
+            <button (click)="cancel()" *ngIf="isedit" mat-icon-button aria-label="Example icon button with a heart icon">
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </section>
+        <div class="profile-section">
+            <div>
+                <img *ngIf="user.urlImg == undefined" class="profile-img" src="../../../assets/images/profileImg/profile-img-0.png" alt="">
+                <img *ngIf="user.urlImg != undefined" class="profile-img" src="../../../assets/images/profileImg/{{user.urlImg}}" alt="">
+            </div>
+            <div class="profile-description">
+                <h2 *ngIf="!isedit">{{user.username}}</h2>
+                <mat-form-field *ngIf="isedit" class="example-full-width" appearance="fill">
+                    <input type="text" matInput placeholder="{{user.username}}" >                         
+                </mat-form-field> 
+                <h3 *ngIf="!isedit">{{user.name}} {{user.lastname}}</h3>
+                <mat-form-field *ngIf="isedit" class="example-full-width" appearance="fill">
+                    <input type="text" matInput  placeholder="{{user.name}}" >                         
+                </mat-form-field> 
+                <mat-form-field *ngIf="isedit" class="example-full-width" appearance="fill">
+                    <input type="text" matInput  placeholder="{{user.lastname}}" >                         
+                </mat-form-field> 
+                <h2>Biography</h2>
+                <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, voluptatem voluptatibus quaerat pariatur omnis, blanditiis aliquid ipsum a doloremque iure consectetur officia modi, veritatis voluptates unde repellendus reprehenderit. Optio, dolores!</p>
+                <section>
+                    <button  *ngIf="isedit" type="submit" (click)="save()" mat-raised-button color="primary" >save</button>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

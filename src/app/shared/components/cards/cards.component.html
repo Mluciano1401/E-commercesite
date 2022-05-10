@@ -53,7 +53,8 @@
 <div *ngIf="mode==='profile'" class="card-profile">
   <mat-card (click)="getproducts(datacard._id)" class="example-card">
     <div class="box-img">
-      <img mat-card-image src="{{urlImg}}" alt="" class="circle-img">
+      <img *ngIf="datacard.urlImg == undefined"  mat-card-image class="circle-img" src="../../../assets/images/profileImg/profile-img-0.png" alt="">
+      <img *ngIf="datacard.urlImg != undefined" mat-card-image  class="circle-img" src="../../../assets/images/profileImg/{{datacard.urlImg}}" alt="">
     </div>
       <mat-card-content>
           <mat-card-title>{{datacard.username}}</mat-card-title>
@@ -67,7 +68,11 @@
       <button (click)="openmodal(datacard._id)" class="btn-edit" mat-icon-button aria-label="Example icon button with a heart icon">
         <mat-icon>edit</mat-icon>
       </button> 
+      <button (click)="remove(datacard._id)" color="warn" class="btn-edit" mat-icon-button aria-label="Example icon button with a heart icon">
+        <mat-icon>delete</mat-icon>
+      </button> 
     </div>
+    <br>
     <div class="box-img">
 
       <img mat-card-image src="{{datacard.urlImg}}" alt="">      

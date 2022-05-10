@@ -28,5 +28,8 @@ export class ProductService {
   createproduct(data:any): Observable<any>{
     return this.http.post(`${this.urlAPI}`, data)
   }
+  deleteProduct(id:string): Observable<any>{
+    return this.http.delete(`${this.urlAPI}${id}`)
+  }
   
 }

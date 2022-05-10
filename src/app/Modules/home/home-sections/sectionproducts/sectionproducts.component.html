@@ -4,10 +4,10 @@
     </button>
     <div class="profile-section">
         <div *ngIf="isseller">
-            <div *ngIf="seller.urlImg == null">
-                <img class="profile-img" src="../../../assets/images/profileImg/img_568656.png" alt="">
+            <div *ngIf="seller.urlImg == undefined">
+                <img class="profile-img" src="../../../assets/images/profileImg/profile-img-0.png" alt="">
             </div>
-            <div *ngIf="seller.urlImg != null">
+            <div *ngIf="seller.urlImg != undefined">
                 <img class="profile-img" src="../../../assets/images/profileImg/{{seller.urlImg}}" alt="">
             </div>            
         </div>

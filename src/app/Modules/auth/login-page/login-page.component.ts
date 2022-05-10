@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,9 +12,11 @@ import { AuthService } from '../services/auth.service';
 export class LoginPageComponent implements OnInit {
   userLogForm!: FormGroup;
   hide:boolean = true;
-  hasError!: boolean;
+  hasError: boolean = false;
+  error:string=""
   constructor(private fb: FormBuilder,
     private router: Router,
+    private cookie:CookieService,
     private userService: AuthService) { 
     }
 
@@ -33,16 +36,21 @@ export class LoginPageComponent implements OnInit {
       password: this.userLogForm.get('password')?.value
     }
     this.userService.loginUser(login).subscribe((user) => {
+      const tokenSession = user.dataUser.accessToken
       if(user.dataUser.role=="seller"){
+        this.cookie.set('tokenseller', tokenSession, 2, '/')
         this.router.navigate(['/home/seller'],);
       }
       else{
+        this.cookie.set('tokenbuyer', tokenSession, 1, '/')
         this.router.navigate(['/home/buyer'],);
       }
       this.getdata(user.dataUser);
       sessionStorage.setItem('User',JSON.stringify(user.dataUser));
     },  error => {
+      console.log(error)
       this.hasError = true;
+      this.error = error.error.message;
       this.userLogForm.reset();
     })
   }
