@@ -36,3 +36,15 @@
     display: flex;
     justify-content: flex-end;
 }
+.img-medium{
+    width: 150px;
+    height: 180px;
+}
+.img-small{
+    width: 90px;
+    height: 100px;
+}
+.img-big{
+    width: 180px;
+    height: 200px;
+}

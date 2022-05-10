@@ -5,7 +5,7 @@
           <mat-card-title>{{datacard.name}}</mat-card-title>
           <mat-card-subtitle>{{datacard.description}}</mat-card-subtitle>
         </mat-card-header>
-        <div class="box-img">
+        <div class="box-img img-big">
           <img (click)="getproduct(datacard._id)" mat-card-image src="{{datacard.urlImg}}" alt="">
         </div>
         <mat-card-content>
@@ -24,7 +24,7 @@
 <!-- medium card design -->
 <div *ngIf="mode==='medium'" class="card-medium">
     <mat-card class="example-card">   
-      <div class="box-img">
+      <div class="box-img img-medium">
         <img (click)="getproduct(datacard._id)" mat-card-image src="{{datacard.urlImg}}" alt="">      
       </div>
          <mat-card-content >
@@ -41,7 +41,7 @@
 <!-- small card design -->
 <div *ngIf="mode==='small'" class="card-small">
     <mat-card  (click)=" getcategort(datacard.name)" class="example-card">
-      <div class="box-img">
+      <div class="box-img img-small">
         <img mat-card-image src="{{datacard.urlImg}}" alt="" class="circle-img">
       </div>
         <mat-card-content>
@@ -52,7 +52,7 @@
 <!-- profile card design -->
 <div *ngIf="mode==='profile'" class="card-profile">
   <mat-card (click)="getproducts(datacard._id)" class="example-card">
-    <div class="box-img">
+    <div class="box-img img-small">
       <img *ngIf="datacard.urlImg == undefined"  mat-card-image class="circle-img" src="../../../assets/images/profileImg/profile-img-0.png" alt="">
       <img *ngIf="datacard.urlImg != undefined" mat-card-image  class="circle-img" src="../../../assets/images/profileImg/{{datacard.urlImg}}" alt="">
     </div>
@@ -73,7 +73,7 @@
       </button> 
     </div>
     <br>
-    <div class="box-img">
+    <div class="box-img img-medium">
 
       <img mat-card-image src="{{datacard.urlImg}}" alt="">      
     </div>     

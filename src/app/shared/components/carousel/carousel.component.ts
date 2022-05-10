@@ -3,7 +3,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel2.0.html',
-  styleUrls: ['./carousel.component.scss']
+  styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit {
   @Input() datacarousel: Array<any> = [];
