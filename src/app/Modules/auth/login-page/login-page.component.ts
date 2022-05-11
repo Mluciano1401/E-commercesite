@@ -45,7 +45,6 @@ export class LoginPageComponent implements OnInit {
         this.cookie.set('tokenbuyer', tokenSession, 1, '/')
         this.router.navigate(['/home/buyer'],);
       }
-      this.getdata(user.dataUser);
       sessionStorage.setItem('User',JSON.stringify(user.dataUser));
     },  error => {
       console.log(error)
@@ -53,8 +52,5 @@ export class LoginPageComponent implements OnInit {
       this.error = error.error.message;
       this.userLogForm.reset();
     })
-  }
-  getdata(user:any){
-    this.userService.getdatauser(user)
   }
 }

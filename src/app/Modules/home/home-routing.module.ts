@@ -13,7 +13,8 @@ const routes: Routes = [
   {path: 'product/:id', component:SectionproductsComponent},
   {path: 'category/:id', component:SectionproductsComponent},
   {path: 'seller', component:HomeSellerComponent, canActivate:[SellerGuard]},
-  {path: 'profile', component:ProfileComponent}
+  {path: 'profile', component:ProfileComponent},
+  {path: '**', redirectTo: 'buyer'}
 ]
 @NgModule({
   imports: [RouterModule.forChild(routes)],

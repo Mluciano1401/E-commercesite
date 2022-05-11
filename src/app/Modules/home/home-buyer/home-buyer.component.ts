@@ -48,7 +48,7 @@ export class HomeBuyerComponent implements OnInit, OnDestroy {
     })
   }
   ngOnDestroy(): void {
-    console.log("I'm dead")
+    console.log("Component home/buyer is dead")
   }
 
 }

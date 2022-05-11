@@ -17,10 +17,10 @@ export class BoxShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.datashop= this.data.data
-    this.getdatashop()
+    this.getdataproduct()
     this.calculatetotal()
   }
-  getdatashop(){
+  getdataproduct(){
    for(let product of this.datashop){
     this.productservice.getproduct(product.product).subscribe((data)=>{
       this.products.push(data);

@@ -71,8 +71,5 @@ export class RegisterPageComponent implements OnInit {
       this.userForm.reset();
     })
   }
-  getdata(user:any){
-    this.userService.getdatauser(user)
-  }
 
 }

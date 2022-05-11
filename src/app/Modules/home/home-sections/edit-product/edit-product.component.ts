@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/shared/services/products.service/product.service';
 import { Dataraw } from '../../../../data/categories';
 @Component({
@@ -14,6 +15,7 @@ export class EditProductComponent implements OnInit {
   categories:Array<any>=Dataraw.category; 
   user:any = sessionStorage.getItem("User")
   constructor(
+    private router: Router,
     private Productservice: ProductService,
     @Inject(MAT_DIALOG_DATA) private data: { id:string, title: string },
     private matDialogRef: MatDialogRef<EditProductComponent>
@@ -61,15 +63,16 @@ export class EditProductComponent implements OnInit {
     let product = this.getdataform()
     if(this.data){
       this.Productservice.updateproduct(this.data.id,product).subscribe((data)=>{
-        console.log("the product has been successfully updated")
+        console.log("the product has been successfully updated") 
         this.close()
+        this.router.navigate(['/home/seller'],)
       })
     }
     else{
       this.Productservice.createproduct(product).subscribe((data)=>{
         console.log("the product has been successfully created")
-        console.log(data)
         this.close()
+        this.router.navigate(['/home/seller'],)
       })
     }
     

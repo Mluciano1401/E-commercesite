@@ -32,7 +32,7 @@
         </mat-card-content>
         <mat-card-actions class="mat-card-actions">
           <span></span>
-          <button (click)="changeColor()"  mat-icon-button aria-label="Example icon button with a heart icon">
+          <button  mat-icon-button (click)="changeColor()" color={{color}} aria-label="Example icon button with a heart icon">
             <mat-icon>favorite</mat-icon>
           </button>        
         </mat-card-actions>
@@ -40,7 +40,7 @@
 </div>
 <!-- small card design -->
 <div *ngIf="mode==='small'" class="card-small">
-    <mat-card  (click)=" getcategort(datacard.name)" class="example-card">
+    <mat-card  (click)="getcategort(datacard.name)" class="example-card">
       <div class="box-img img-small">
         <img mat-card-image src="{{datacard.urlImg}}" alt="" class="circle-img">
       </div>

@@ -51,25 +51,27 @@ export class CardsComponent implements OnInit {
     });
   }
   buyprodut(price:number,supplier:string, idproduct:string){
-    var dataraw_user = JSON.parse(this.user);
-    var money;
-    this.sellerService.getuserbyusername(supplier).subscribe((data)=>{
-    money = { money: data[0].money + price}
-    this.sellerService.updatemoney(data[0]._id,money).subscribe((dat)=>{
-        //console.log(dat)
-      }) 
-    })
-    var datas = {
-      customer: dataraw_user.username,
-      product: idproduct,
-      price: price,
-      seller: supplier
+    if(this.user){
+        var dataraw_user = JSON.parse(this.user);
+        var money;
+        this.sellerService.getuserbyusername(supplier).subscribe((data)=>{
+        money = { money: data[0].money + price}
+        this.sellerService.updatemoney(data[0]._id,money).subscribe((dat)=>{
+            //console.log(dat)
+          }) 
+        })
+        var datas = {
+          customer: dataraw_user.username,
+          product: idproduct,
+          price: price,
+          seller: supplier
+        }
+        this.purchaseService.processpurchase(datas).subscribe((data)=>{
+          this.router.navigate(['/home/buyer'],)
+        }, (error)=>{
+          
+        })
     }
-    this.purchaseService.processpurchase(datas).subscribe((data)=>{
-      this.router.navigate(['/home/seller'],)
-    }, (error)=>{
-      
-    })
   }
   remove(id:string){
     this.Productservice.deleteProduct(id).subscribe(()=>{

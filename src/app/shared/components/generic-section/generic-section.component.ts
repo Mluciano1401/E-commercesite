@@ -21,6 +21,7 @@ export class GenericSectionComponent implements OnInit {
   ngOnInit(): void {
     this.takeMeasures();
   }
+  //depending on the width of the display the columns will vary
   takeMeasures(){
     if(this.scrWidth <= 580 && (this.mode == "medium" || this.mode == "big")){
       this.cols = 1;

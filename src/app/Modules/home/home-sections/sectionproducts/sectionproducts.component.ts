@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/shared/services/products.service/product.service';
+import { PurchaseService } from 'src/app/shared/services/purchaseService/purchase.service';
 import { GetUserSellerService } from 'src/app/shared/services/userseller.service/get-user-seller.service';
 
 @Component({
@@ -11,14 +12,16 @@ import { GetUserSellerService } from 'src/app/shared/services/userseller.service
 export class SectionproductsComponent implements OnInit {
   id: string | null;
   section: string |undefined;
-  seller:any;
+  object:any;
   products:Array<any>=[];
   isseller:boolean= false;
   iscategory:boolean = false;
   color: string ="#bdbdbd";
   is_liked:boolean = false;
+  user:any = sessionStorage.getItem("User");
   constructor(private aRouter: ActivatedRoute,
-    private router: Router,
+    private router: Router,    
+    private purchaseService: PurchaseService,
     private sellerService: GetUserSellerService,
     private Productservice: ProductService) {
     this.id = this.aRouter.snapshot.paramMap.get('id');
@@ -37,7 +40,7 @@ export class SectionproductsComponent implements OnInit {
       if(this.id != null){
         this.iscategory = true;
         this.isseller = false;
-        this.seller = {name: this.id}
+        this.object = {name: this.id}
         this.getproductsbycat(null, this.id)
       }
       
@@ -46,13 +49,13 @@ export class SectionproductsComponent implements OnInit {
   getseller(){
     if(this.id != null){
       this.sellerService.getSellerbyAPI(this.id).subscribe((data)=>{
-        this.seller = data;
+        this.object = data;
         this.getproductsbyseller();
       })
     }    
   }
   getproductsbyseller(){ 
-    this.Productservice.getproductsbysupplier(this.seller.username).subscribe((data)=>{
+    this.Productservice.getproductsbysupplier(this.object.username).subscribe((data)=>{
       this.products = data;
     })   
   }
@@ -62,8 +65,8 @@ export class SectionproductsComponent implements OnInit {
   getproduct(){
     if(this.id != null){
       this.Productservice.getproduct(this.id).subscribe((data)=>{
-        this.seller = data;
-        this.getproductsbycat(this.seller, null);
+        this.object= data;
+        this.getproductsbycat(this.object, null);
       })
     }   
   }
@@ -86,6 +89,30 @@ export class SectionproductsComponent implements OnInit {
     }else{
       this.is_liked=false;
       this.color="#bdbdbd"
+    }
+  }
+
+  buyprodut(price:number,supplier:string, idproduct:string){
+    if(this.user){
+      var dataraw_user = JSON.parse(this.user);
+      var money;
+      this.sellerService.getuserbyusername(supplier).subscribe((data)=>{
+      money = { money: data[0].money + price}
+      this.sellerService.updatemoney(data[0]._id,money).subscribe((dat)=>{
+          //console.log(dat)
+        }) 
+      })
+      var datas = {
+        customer: dataraw_user.username,
+        product: idproduct,
+        price: price,
+        seller: supplier
+      }
+      this.purchaseService.processpurchase(datas).subscribe((data)=>{
+        this.router.navigate(['/home/buyer'],)
+      }, (error)=>{
+        
+      })
     }
   }
 }
