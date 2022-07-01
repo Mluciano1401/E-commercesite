@@ -1,15 +1,10 @@
 <div class="categories-content">
-    <button mat-mini-fab color="gray" (click)="return()">
+    <a mat-mini-fab color="gray" routerLink="/home/buyer">
         <mat-icon>keyboard_backspace</mat-icon>
-    </button>
+    </a>
     <div class="profile-section">
         <div *ngIf="isseller">
-            <div *ngIf="object.urlImg == undefined">
-                <img class="profile-img" src="../../../assets/images/profileImg/profile-img-0.png" alt="">
-            </div>
-            <div *ngIf="object.urlImg != undefined">
-                <img class="profile-img" src="../../../assets/images/profileImg/{{object.urlImg}}" alt="">
-            </div>            
+            <img class="profile-img" [src]=" 'assets/images/profileImg/' + object.urlImg || 'profile-img-0.png' " alt="">           
         </div>
         <div *ngIf="!isseller">
             <img class="profile-img" src="{{object.urlImg}}" alt="">
@@ -24,13 +19,13 @@
             </div>
             <div  class="profile-section-actions" *ngIf="!isseller && !iscategory">
                 <h2>{{object.price| currency:"USD"}}</h2>
-                <button mat-icon-button (click)="changeColor()" color={{color}} aria-label="Example icon button with a heart icon">
+                <button mat-icon-button (click)="changeColor()" [color]="color" aria-label="Example icon button with a heart icon">
                     <mat-icon>favorite</mat-icon>
                 </button>
                 <button  (click)="buyprodut(object.price, object.supplier, object._id)"mat-raised-button color="primary">buy</button>
             </div >
             <div class="profile-section-actions" *ngIf="isseller && !iscategory">
-                <button mat-icon-button (click)="changeColor()" color={{color}} aria-label="Example icon button with a heart icon">
+                <button mat-icon-button (click)="changeColor()" [color]="color" aria-label="Example icon button with a heart icon">
                     <mat-icon>favorite</mat-icon>
                 </button>
                 <button  mat-icon-button aria-label="Example icon button">

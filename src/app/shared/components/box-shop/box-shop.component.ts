@@ -1,5 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { Products } from 'src/app/models/products.model';
+import { ShopItem } from 'src/app/models/shopitem.model';
+
 import { ProductService } from '../../services/products.service/product.service';
 
 @Component({
@@ -8,9 +12,9 @@ import { ProductService } from '../../services/products.service/product.service'
   styleUrls: ['./box-shop.component.css']
 })
 export class BoxShopComponent implements OnInit {
-  datashop:Array<any>=[];
-  products:Array<any>=[]
-  moneytotal:number=0;
+  datashop:Array<ShopItem>=[];
+  products:Array<Products>=[]
+  moneyTotal:number=0;
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: {data: any},
     private productservice: ProductService) { }
@@ -18,7 +22,7 @@ export class BoxShopComponent implements OnInit {
   ngOnInit(): void {
     this.datashop= this.data.data
     this.getdataproduct()
-    this.calculatetotal()
+    this.calculateTotal()
   }
   getdataproduct(){
    for(let product of this.datashop){
@@ -27,9 +31,9 @@ export class BoxShopComponent implements OnInit {
     })
    }
   }
-  calculatetotal(){
+  calculateTotal(){
     for(let product of this.datashop){
-      this.moneytotal += Number.parseFloat(product.price);
+      this.moneyTotal += Number.parseFloat(product.price);
     }
   }
 

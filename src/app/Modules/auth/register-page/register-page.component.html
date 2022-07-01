@@ -3,7 +3,7 @@
         <div class="title">
           <span>Register</span>  
         </div>
-        <form [formGroup]="userForm" class="form-content">
+        <form [formGroup]="userForm" (ngSubmit)="submit()" class="form-content">
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Name</mat-label>
                 <input type="text" matInput formControlName="name">
@@ -60,7 +60,7 @@
             </mat-error>
             <div class="margin-button">
                 <button routerLink="/" mat-raised-button>cancel</button>
-                <button type="submit" (click)="submit()" mat-raised-button color="primary" [disabled]="userForm.invalid">submit</button>
+                <button type="submit" mat-raised-button color="primary" [disabled]="userForm.invalid">submit</button>
             </div>
         </form>
         <div class=" text-center ">

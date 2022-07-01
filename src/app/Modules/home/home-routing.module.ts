@@ -1,7 +1,9 @@
-import { SellerGuard } from './../../core/guards/seller.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { SellerGuard } from './../../core/guards/seller.guard';
 import { BuyerGuard } from 'src/app/core/guards/buyer.guard';
+
 import { HomeBuyerComponent } from './home-buyer/home-buyer.component';
 import { SectionproductsComponent } from './home-sections/sectionproducts/sectionproducts.component';
 import { HomeSellerComponent } from './home-seller/home-seller.component';

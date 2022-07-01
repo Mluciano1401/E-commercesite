@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/core/local-storage.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,12 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user:any = sessionStorage.getItem("User")
+  user:any;
   isedit:boolean = false;
-  constructor( private router: Router,) { }
+  constructor( 
+    private router: Router,
+    private localStorageService:StorageService
+    ) { }
 
   ngOnInit(): void {
-    this.user = JSON.parse(this.user)
+    this.user = this.localStorageService.getItem("User");
   }
   editable(){
     this.isedit = true
@@ -22,8 +26,5 @@ export class ProfileComponent implements OnInit {
   }
   save(){
 
-  }
-  return(){
-    this.router.navigate([`/home/buyer`]);
   }
 }

@@ -9,7 +9,6 @@ import { Dataraw } from '../../../data/categories';
 export class LandingPageComponent implements OnInit {
   urlImgs:Array<any>=[];
   categories:Array<any>=Dataraw.category;
-  //categories:Array<any>=[];
   products:Array<any>=[];
   constructor(
     private Productservice: ProductService

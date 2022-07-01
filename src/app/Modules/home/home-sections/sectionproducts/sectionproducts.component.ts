@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { StorageService } from 'src/app/core/local-storage.service';
 import { ProductService } from 'src/app/shared/services/products.service/product.service';
 import { PurchaseService } from 'src/app/shared/services/purchaseService/purchase.service';
 import { GetUserSellerService } from 'src/app/shared/services/userseller.service/get-user-seller.service';
@@ -18,12 +20,13 @@ export class SectionproductsComponent implements OnInit {
   iscategory:boolean = false;
   color: string ="#bdbdbd";
   is_liked:boolean = false;
-  user:any = sessionStorage.getItem("User");
+  user:any;
   constructor(private aRouter: ActivatedRoute,
     private router: Router,    
     private purchaseService: PurchaseService,
     private sellerService: GetUserSellerService,
-    private Productservice: ProductService) {
+    private Productservice: ProductService,
+    private storageService:StorageService) {
     this.id = this.aRouter.snapshot.paramMap.get('id');
     this.section = this.aRouter.snapshot.routeConfig?.path
   }
@@ -59,9 +62,6 @@ export class SectionproductsComponent implements OnInit {
       this.products = data;
     })   
   }
-  return(){
-    this.router.navigate([`/home/buyer`]);
-  }
   getproduct(){
     if(this.id != null){
       this.Productservice.getproduct(this.id).subscribe((data)=>{
@@ -94,7 +94,7 @@ export class SectionproductsComponent implements OnInit {
 
   buyprodut(price:number,supplier:string, idproduct:string){
     if(this.user){
-      var dataraw_user = JSON.parse(this.user);
+      var dataraw_user = this.storageService.getItem("User");
       var money;
       this.sellerService.getuserbyusername(supplier).subscribe((data)=>{
       money = { money: data[0].money + price}

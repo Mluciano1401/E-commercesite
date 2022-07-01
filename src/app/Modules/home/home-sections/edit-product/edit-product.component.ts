@@ -2,8 +2,11 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ProductService } from 'src/app/shared/services/products.service/product.service';
+
 import { Dataraw } from '../../../../data/categories';
+
+import { ProductService } from 'src/app/shared/services/products.service/product.service';
+
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',

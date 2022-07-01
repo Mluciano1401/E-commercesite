@@ -1,8 +1,7 @@
 <div class="menu-profile">
     <mat-nav-list>
         <div class="section-profile">
-            <img *ngIf="user.urlImg == undefined" class="profile-img" src="../../../assets/images/profileImg/profile-img-0.png" alt="">
-            <img *ngIf="user.urlImg != undefined" class="profile-img" src="../../../assets/images/profileImg/{{user.urlImg}}" alt="">
+          <img class="profile-img" [src]=" '../../../assets/images/profileImg/' + user.urlImg || 'profile-img-0.png' " alt="">
             <div>
                 <h3 mat-line>{{user.username}}</h3>
                 <h3 mat-line>{{user.name}} {{user.lastname}}</h3>

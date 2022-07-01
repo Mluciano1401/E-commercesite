@@ -1,10 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+
 import { EditProductComponent } from 'src/app/Modules/home/home-sections/edit-product/edit-product.component';
-import { PurchaseService } from '../../services/purchaseService/purchase.service';
-import { GetUserSellerService } from '../../services/userseller.service/get-user-seller.service';
 import { BottomProfileOverviewComponent } from '../bottom-profile-overview/bottom-profile-overview.component';
 
 @Component({

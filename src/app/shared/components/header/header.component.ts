@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductService } from '../../services/products.service/product.service';
+
+import { StorageService } from 'src/app/core/local-storage.service';
 import { PurchaseService } from '../../services/purchaseService/purchase.service';
+
 import { BoxShopComponent } from '../box-shop/box-shop.component';
 
 @Component({
@@ -10,17 +12,18 @@ import { BoxShopComponent } from '../box-shop/box-shop.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  user:any = sessionStorage.getItem("User")
+  user:any;
   datapurchase:Array<any>=[]
   @Input() iscolorblack:boolean=false;
   constructor(
     public matDialog: MatDialog,
     private purchaseService: PurchaseService,
-    private Productservice: ProductService) { 
+    private storageService:StorageService
+    ) { 
   }
 
   ngOnInit(): void {
-    this.user = JSON.parse(this.user)
+    this.user = this.storageService.getItem("User");
     if(this.user){
       this.gethistory()
     }

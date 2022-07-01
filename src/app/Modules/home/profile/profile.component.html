@@ -1,7 +1,7 @@
 <div class="container-profile">
-    <button mat-mini-fab color="gray" (click)="return()">
+    <a mat-mini-fab color="gray" routerLink="/home/buyer">
         <mat-icon>keyboard_backspace</mat-icon>
-    </button>
+    </a>
     <div>
         <section>
             <button (click)="editable()" *ngIf="!isedit" mat-icon-button aria-label="Example icon button with a heart icon">

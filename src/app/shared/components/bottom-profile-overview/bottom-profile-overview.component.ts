@@ -3,6 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
+import { StorageService } from 'src/app/core/local-storage.service';
+
 @Component({
   selector: 'app-bottom-profile-overview',
   templateUrl: './bottom-profile-overview.component.html',
@@ -13,13 +15,14 @@ export class BottomProfileOverviewComponent implements OnInit {
   constructor(private router: Router,
     @Inject(MAT_DIALOG_DATA) private data: {user: any},
     private cookieService: CookieService,
+    private storageService:StorageService,
     private matDialogRef: MatDialogRef<BottomProfileOverviewComponent>) { }
 
   ngOnInit(): void {
     this.user = this.data.user;
   }
   logOut(){
-    sessionStorage.removeItem("User");
+    this.storageService.removeItem("User");
     this.matDialogRef.close();
     if(this.cookieService.check('tokenseller')){
       this.cookieService.delete('tokenseller','/')

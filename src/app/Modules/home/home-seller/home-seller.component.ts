@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+
+
 import { Dataraw } from 'src/app/data/categories';
+
+import { StorageService } from 'src/app/core/local-storage.service';
 import { ProductService } from 'src/app/shared/services/products.service/product.service';
-import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-home-seller',
@@ -12,14 +14,16 @@ import { AuthService } from '../../auth/services/auth.service';
 export class HomeSellerComponent implements OnInit, OnDestroy {
   titles:Array<string>=["My products","My offers",""];
   products:Array<any>=[];
-  user:any = sessionStorage.getItem("User")
+  user:any;
   menuurl:Array<any>=Dataraw.menu2;
-  constructor(private aRouter: ActivatedRoute,    
-    private Productservice: ProductService,) { 
+  constructor(  
+    private Productservice: ProductService,
+    private storageService:StorageService
+    ) { 
     }
 
   ngOnInit(): void {
-    this.user = JSON.parse(this.user)
+    this.user = this.storageService.getItem("User");
     this.getproductsbyseller();
   }
   getproductsbyseller(){ 
