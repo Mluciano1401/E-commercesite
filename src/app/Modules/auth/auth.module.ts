@@ -6,11 +6,13 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import { AuthRoutingModule } from './auth-routing.module';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+import { AuthRoutingModule } from './auth-routing.module';
+
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 @NgModule({
   declarations: [  
     LoginPageComponent,

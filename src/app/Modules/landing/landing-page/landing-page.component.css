@@ -4,23 +4,26 @@
 .toolbar{
     padding: 42px;
     margin: 0;
+    color: rgb(44, 60, 70);
+    display: flex;
+    justify-content: space-between;
+}
+.btn-color{
     background-color: #00467F;
     background: -webkit-linear-gradient(to right, #A5CC82, #00467F);
     background: linear-gradient(to right, #A5CC82, #00467F);
     color: white;
-}
-.btn-color{
-    color: #00467F;
-    color: -webkit-linear-gradient(to right, #A5CC82, #00467F);
-    color: linear-gradient(to right, #A5CC82, #00467F);
+    font-weight: 700;
+    margin: 5px;
 }
 .container{
-    min-width: 150px;
-    max-width: 1920px;
-    width: 100%;
-    background-color: white;
-    padding: 15px;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
 }
-.categories-content{
-    margin: 2rem;
+.categories-content{    
+    padding: 50px;
+    min-width: 150px;
+    width: 80%;
+    background-color: white;
 }

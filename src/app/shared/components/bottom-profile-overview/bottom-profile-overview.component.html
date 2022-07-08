@@ -1,0 +1,22 @@
+<div class="menu-profile">
+    <mat-nav-list>
+        <div class="section-profile">
+          <img class="profile-img" [src]=" '../../../assets/images/profileImg/' + user.urlImg || 'profile-img-0.png' " alt="">
+            <div>
+                <h3 mat-line>{{user.username}}</h3>
+                <h3 mat-line>{{user.name}} {{user.lastname}}</h3>
+            </div>
+        </div>          
+        <mat-divider></mat-divider>  
+        <a href="/home/profile" mat-list-item >
+          <span mat-line>View profile</span>
+        </a>      
+        <a href="/home/profile" mat-list-item >
+            <span mat-line>Setting</span>
+        </a>
+        <mat-divider></mat-divider> 
+        <a (click)="logOut()" mat-list-item >
+          <span mat-line>Log out</span>
+        </a>
+      </mat-nav-list>
+</div>

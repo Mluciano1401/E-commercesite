@@ -1,0 +1,18 @@
+<div class="scroll-box"> 
+    <div class="contain-box-shop">
+        <section class="column">
+            <div *ngFor="let product of products" >
+            <img src="{{product.urlImg}}" class="profile-img" alt=""/>
+            <h2>{{product.name}}</h2> 
+            <br> 
+        </div>  
+        </section>
+        <section class="column">
+            <div *ngFor="let data of datashop" class="spacing-box">
+            <h5><strong>seller: </strong>{{data.seller}}</h5>
+            <span><strong>price: </strong>{{data.price | currency}}</span>       
+        </div> 
+        </section>        
+    </div>
+    <strong>Total: {{moneyTotal | currency}}</strong>   
+</div>

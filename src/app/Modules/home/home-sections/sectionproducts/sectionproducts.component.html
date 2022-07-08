@@ -1,0 +1,45 @@
+<div class="categories-content">
+    <a mat-mini-fab color="gray" routerLink="/home/buyer">
+        <mat-icon>keyboard_backspace</mat-icon>
+    </a>
+    <div class="profile-section">
+        <div *ngIf="isseller">
+            <img class="profile-img" [src]=" 'assets/images/profileImg/' + object.urlImg || 'profile-img-0.png' " alt="">           
+        </div>
+        <div *ngIf="!isseller">
+            <img class="profile-img" src="{{object.urlImg}}" alt="">
+        </div>
+        <div class="profile-description">
+            <h1 *ngIf="isseller">{{object.username}}</h1>
+            <h2>{{object.name}} {{object.lastname}}</h2>
+            <p *ngIf="isseller">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, voluptatem voluptatibus quaerat pariatur omnis, blanditiis aliquid ipsum a doloremque iure consectetur officia modi, veritatis voluptates unde repellendus reprehenderit. Optio, dolores!</p>
+            <div *ngIf="!isseller && !iscategory">
+                <p>{{object.description}}</p>
+                <span><strong>Supplier: </strong>{{object.supplier}}</span>
+            </div>
+            <div  class="profile-section-actions" *ngIf="!isseller && !iscategory">
+                <h2>{{object.price| currency:"USD"}}</h2>
+                <button mat-icon-button (click)="changeColor()" [color]="color" aria-label="Example icon button with a heart icon">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+                <button  (click)="buyprodut(object.price, object.supplier, object._id)"mat-raised-button color="primary">buy</button>
+            </div >
+            <div class="profile-section-actions" *ngIf="isseller && !iscategory">
+                <button mat-icon-button (click)="changeColor()" [color]="color" aria-label="Example icon button with a heart icon">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+                <button  mat-icon-button aria-label="Example icon button">
+                    <mat-icon>message</mat-icon>
+                </button>
+                <button mat-raised-button color="primary">follow</button>
+            </div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>  
+    <div class="content" *ngIf="products.length > 0">
+        <app-generic-section [title]="'Related products'" [data]="products" [mode]="'big'" [rowh]=400></app-generic-section>
+    </div>    
+    <div class="info" *ngIf="products.length == 0">
+        <mat-icon>info</mat-icon><h3>No found products</h3>
+    </div>
+</div>

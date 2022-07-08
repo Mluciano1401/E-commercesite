@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="card-body example-form">
+            <div class="title-action">
+              <span>{{title}}</span>  
+            </div>
+            <!--  -->
+            <form [formGroup]="productForm" class="form-content">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput formControlName="name" >
+                    <mat-error *ngIf="productForm.get('name')?.invalid">
+                        This field <strong>is required</strong>
+                    </mat-error>                          
+                </mat-form-field> 
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Description</mat-label>                 
+                    <input type="text"  matInput formControlName="description">
+                    <mat-error *ngIf="productForm.get('description')?.invalid">
+                        This field <strong>is required</strong>
+                      </mat-error>
+                </mat-form-field> 
+                <mat-form-field appearance="fill">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="category">
+                      <mat-option *ngFor="let category of categories" [value]="category.name">
+                        {{category.name}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="productForm.get('category')?.invalid">
+                        This field <strong>is required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Price</mat-label>
+                    <input type="number" matInput formControlName="price">
+                    <mat-error *ngIf="productForm.get('price')?.invalid">
+                        This field <strong>is required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>URL-Image</mat-label>
+                    <input type="text" matInput formControlName="urlimg">
+                    <mat-error *ngIf="productForm.get('urlimg')?.invalid">
+                        This field <strong>is required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <div class="margin-button">
+                    <button (click)="close()" mat-raised-button>cancel</button>
+                    <button type="submit" (click)="save()" mat-raised-button color="primary" >save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+

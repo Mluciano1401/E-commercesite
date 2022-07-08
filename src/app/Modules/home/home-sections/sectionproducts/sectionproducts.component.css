@@ -1,0 +1,33 @@
+.categories-content{
+    min-width: 150px;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+}
+.profile-img{
+    border-radius: 50%;
+    width: 150px;
+}
+.profile-section{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+.profile-description{
+    padding: 40px;
+}
+.profile-section-actions{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+}
+.info{
+    padding: 30px;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.content{
+    padding: 30px;
+}

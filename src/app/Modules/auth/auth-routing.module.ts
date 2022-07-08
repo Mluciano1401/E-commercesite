@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {path: 'register', component:RegisterPageComponent},
   {path: 'login', component:LoginPageComponent},
-  {path: '**', redirectTo: 'auth/register'}
+  {path: '**', redirectTo: 'register'}
 ];
 
 @NgModule({

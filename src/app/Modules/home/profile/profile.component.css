@@ -1,0 +1,25 @@
+.container-profile{
+    min-width: 150px;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+}
+.profile-img{
+    border-radius: 50%;
+    width: 150px;
+}
+.profile-section{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+.profile-description{
+    padding: 40px;
+}
+section{
+    display:flex;
+    justify-content: flex-end;
+}
+.example-full-width {
+    width: 70%;
+}

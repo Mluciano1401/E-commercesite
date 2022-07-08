@@ -1,0 +1,28 @@
+<mat-toolbar class="toolbar">
+    <span>
+        <div class="example-button-container">
+        <button mat-mini-fab color="white" aria-label="Example icon button with a menu icon">
+          <mat-icon >facebook</mat-icon>
+        </button>
+        <button mat-mini-fab color="white" aria-label="Example icon button with a menu icon">
+          <mat-icon>messenger</mat-icon>
+      </button>
+      </div>
+    </span>
+    <span class="example-spacer"></span>
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Search</mat-label>
+        <input matInput>
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </p>
+    <div *ngIf="user != undefined">
+      <span *ngIf="user.role == 'seller'">{{user.money | currency}}</span>
+      <div *ngIf="user.role == 'buyer'">
+        <button mat-icon-button (click)="openhistorymodal()" aria-label="Example icon button with a heart icon">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
+      </div>
+    </div>
+</mat-toolbar>

@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    max-width: 600px;
+    width: 100%;
+    justify-content: center; 
+  }
+  .title-action{
+      font-size: 1.5rem;
+  }
+  .card-body{
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+  }  
+  .example-full-width {
+      width: 100%;
+  }
+  .form-content{
+      padding: 20px;
+  }
+.margin-button{
+    margin: 22px;
+    display: flex;
+    justify-content: space-between;
+  }
