@@ -4,26 +4,34 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class GetUserSellerService {
-  urlAPI="http://localhost:4000/api/user/"
+export default class GetUserSellerService {
+  urlAPI = 'http://localhost:4000/api/user/';
+
   constructor(
-    private http: HttpClient
-  ) { }
-  getSellers(): Observable<any>{
-    return this.http.get(`${this.urlAPI}`)
+    private http: HttpClient,
+  ) {
+    this.http = http;
   }
-  getSellerbyAPI(id:string):Observable<any>{
-    return this.http.get(`${this.urlAPI}${id}`)
+
+  getSellers(): Observable<any> {
+    return this.http.get(`${this.urlAPI}`);
   }
-  getuserbyusername(username:string):Observable<any>{
-    return this.http.get(`${this.urlAPI}username/${username}`)
+
+  getSellerbyAPI(id: string): Observable<any> {
+    return this.http.get(`${this.urlAPI}${id}`);
   }
-  updateuser(id:String, data:any): Observable<any>{
-    return this.http.put(`${this.urlAPI}${id}`, data)
+
+  getuserbyusername(username: string): Observable<any> {
+    return this.http.get(`${this.urlAPI}username/${username}`);
   }
-  updatemoney(id:string, data:any):Observable<any>{
-    return this.http.patch(`${this.urlAPI}money/${id}`, data)
+
+  updateuser(id: string, data: any): Observable<any> {
+    return this.http.put(`${this.urlAPI}${id}`, data);
+  }
+
+  updatemoney(id: string, data: any): Observable<any> {
+    return this.http.patch(`${this.urlAPI}money/${id}`, data);
   }
 }

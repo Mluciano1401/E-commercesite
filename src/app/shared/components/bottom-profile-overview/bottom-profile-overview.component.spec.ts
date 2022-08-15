@@ -8,9 +8,9 @@ describe('BottomProfileOverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BottomProfileOverviewComponent ]
+      declarations: [BottomProfileOverviewComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

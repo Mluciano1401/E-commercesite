@@ -1,26 +1,27 @@
-import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {LayoutModule} from '@angular/cdk/layout';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AuthRoutingModule } from './auth-routing.module';
+import AuthRoutingModule from './auth-routing.module';
 
-import { LoginPageComponent } from './login-page/login-page.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
+import LoginPageComponent from './login-page/login-page.component';
+import RegisterPageComponent from './register-page/register-page.component';
+
 @NgModule({
-  declarations: [  
+  declarations: [
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule, 
+    AuthRoutingModule,
     LayoutModule,
     MatIconModule,
     MatFormFieldModule,
@@ -30,11 +31,11 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [LoginPageComponent,
     RegisterPageComponent],
   providers: [
-      {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
-  ]
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+  ],
 })
-export class AuthModule { }
+export default class AuthModule { }

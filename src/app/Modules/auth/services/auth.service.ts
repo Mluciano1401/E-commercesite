@@ -1,22 +1,28 @@
+import UserLog from 'src/app/models/user/userlog.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { User } from 'src/app/models/user.model';
+import User from 'src/app/models/user/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthService {
-  url="http://localhost:4000/api/auth/"
+export default class AuthService {
+  url = 'http://localhost:4000/api/auth/';
+
   constructor(
-    private http: HttpClient
-  ) { }
-  postUser(user: User): Observable<any>{
-    return this.http.post(`${this.url}register`, user)
+    private http: HttpClient,
+  ) {
+    this.http = http;
   }
-  loginUser(data:any): Observable<any>{
-    return this.http.post(`${this.url}login`, data)
+
+  postUser(user: User): Observable<unknown> {
+    return this.http.post(`${this.url}register`, user);
+  }
+
+  loginUser(data: UserLog): Observable<unknown> {
+    return this.http.post(`${this.url}login`, data);
   }
 }
