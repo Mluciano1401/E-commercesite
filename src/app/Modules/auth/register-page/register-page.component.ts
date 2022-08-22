@@ -1,34 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,  FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { User } from './../../../models/user.model';
-
 import { CookieService } from 'ngx-cookie-service';
-import { AuthService } from '../services/auth.service';
+import { dataUser } from '../../../models/user.model';
+import User from '../../../models/user/user.model';
+
+import AuthService from '../services/auth.service';
 
 import { ConfirmedValidator } from './validator/confirmed.validator';
+
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
-  styleUrls: ['../auth.css']
+  styleUrls: ['../auth.css'],
 })
-export class RegisterPageComponent implements OnInit {
+export default class RegisterPageComponent implements OnInit {
   userForm!: FormGroup;
-  hide:boolean = true;
-  hide2:boolean = true;  
-  hasError: boolean = false;
-  error:string=""
+
+  hide = true;
+
+  hide2 = true;
+
+  hasError = false;
+
+  error = '';
+
   constructor(
-    private cookie:CookieService,
+    private cookie: CookieService,
     private fb: FormBuilder,
     private router: Router,
-    private userService: AuthService) {}
+    private userService: AuthService,
+  ) {
+    this.fb = fb;
+    this.router = router;
+    this.cookie = cookie;
+    this.userService = userService;
+  }
 
   ngOnInit(): void {
-   this.formBuilder();
+    this.formBuilder();
   }
-  private formBuilder(): void{
+
+  private formBuilder(): void {
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -36,18 +50,19 @@ export class RegisterPageComponent implements OnInit {
       password: ['', [
         Validators.required,
         Validators.minLength(6),
-        Validators.maxLength(22)
+        Validators.maxLength(22),
       ]],
-      confirmpassword: ['',[
+      confirmpassword: ['', [
         Validators.required,
       ]],
       role: ['', Validators.required],
     }, {
       validator: ConfirmedValidator('password', 'confirmpassword'),
-      
-  })
+
+    });
   }
-  submit(): void{
+
+  submit(): void {
     this.hasError = false;
     const USER: User = {
       name: this.userForm.get('name')?.value,
@@ -56,23 +71,21 @@ export class RegisterPageComponent implements OnInit {
       password: this.userForm.get('password')?.value,
       role: this.userForm.get('role')?.value,
       money: 0,
-    }
-    this.userService.postUser(USER).subscribe((user) => {
-      const tokenSession = user.dataUser.accessToken
-      if(user.dataUser.role=="seller"){
-        this.cookie.set('tokenseller', tokenSession, 1, '/')
-        this.router.navigate(['/home/seller'],);
+    };
+    this.userService.postUser(USER).subscribe((user:dataUser) => {
+      const tokenSession = user.dataUser.accessToken;
+      if (user.dataUser.role === 'seller') {
+        this.cookie.set('tokenseller', tokenSession, 1, '/');
+        this.router.navigate(['/home/seller']);
+      } else {
+        this.cookie.set('tokenbuyer', tokenSession, 1, '/');
+        this.router.navigate(['/home/buyer']);
       }
-      else{
-        this.cookie.set('tokenbuyer', tokenSession, 1, '/')
-        this.router.navigate(['/home/buyer'],);
-      }
-      sessionStorage.setItem('User',JSON.stringify(user.dataUser));
-    }, error => {
+      sessionStorage.setItem('User', JSON.stringify(user.dataUser));
+    }, (error: Error) => {
       this.hasError = true;
-      this.error = error.error;
+      this.error = error.message;
       this.userForm.reset();
-    })
+    });
   }
-
 }

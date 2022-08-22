@@ -8,9 +8,9 @@ describe('GenericSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GenericSectionComponent ]
+      declarations: [GenericSectionComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

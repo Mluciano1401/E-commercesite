@@ -17,9 +17,9 @@
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
     </p>
-    <div *ngIf="user != undefined">
-      <span *ngIf="user.role == 'seller'">{{user.money | currency}}</span>
-      <div *ngIf="user.role == 'buyer'">
+    <div *ngIf="user !== undefined">
+      <span *ngIf="user.role === 'seller'">{{user.money | currency}}</span>
+      <div *ngIf="user.role === 'buyer'">
         <button mat-icon-button (click)="openhistorymodal()" aria-label="Example icon button with a heart icon">
           <mat-icon>shopping_cart</mat-icon>
         </button>

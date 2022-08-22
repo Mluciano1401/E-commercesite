@@ -4,15 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [
-  {path: '', component:LandingPageComponent},
+  { path: '', component: LandingPageComponent },
   {
     path: '**',
-    redirectTo: ''
-  }
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class LandingRoutingModule { }
+export default class LandingRoutingModule { }
