@@ -3,12 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { CookieService } from 'ngx-cookie-service';
-import { dataUser } from '../../../models/user.model';
+import dataUser from '../../../models/user/datauser.model';
 import User from '../../../models/user/user.model';
 
 import AuthService from '../services/auth.service';
 
-import { ConfirmedValidator } from './validator/confirmed.validator';
+import ConfirmedValidator from './validator/confirmed.validator';
 
 @Component({
   selector: 'app-register-page',
@@ -72,7 +72,7 @@ export default class RegisterPageComponent implements OnInit {
       role: this.userForm.get('role')?.value,
       money: 0,
     };
-    this.userService.postUser(USER).subscribe((user:dataUser) => {
+    this.userService.postUser(USER).subscribe((user: any) => {
       const tokenSession = user.dataUser.accessToken;
       if (user.dataUser.role === 'seller') {
         this.cookie.set('tokenseller', tokenSession, 1, '/');

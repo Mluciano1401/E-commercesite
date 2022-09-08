@@ -50,7 +50,7 @@ export default class LoginPageComponent implements OnInit {
       username: this.userLogForm.get('username')?.value,
       password: this.userLogForm.get('password')?.value,
     };
-    this.userService.loginUser(login).subscribe((user:dataUser) => {
+    this.userService.loginUser(login).subscribe((user: any) => {
       const tokenSession = user.dataUser.accessToken;
       if (user.dataUser.role === 'seller') {
         this.cookie.set('tokenseller', tokenSession, 2, '/');

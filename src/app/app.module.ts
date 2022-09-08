@@ -2,10 +2,11 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-bootstrap/carousel'
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import AppRoutingModule from './app-routing.module';
-import AppComponent from './app.component.ts';
-
+import AppComponent from './app.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,6 +16,8 @@ import AppComponent from './app.component.ts';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    TooltipModule.forRoot(),
+    CarouselModule.forRoot(),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

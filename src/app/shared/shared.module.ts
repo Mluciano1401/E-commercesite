@@ -21,6 +21,8 @@ import CarouselComponent from './components/carousel/carousel.component';
 import FooterComponent from './components/footer/footer.component';
 import SidebarComponent from './components/sidebar/sidebar.component';
 import CardsComponent from './components/cards/cards.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import CardsComponent from './components/cards/cards.component';
     MatBadgeModule,
     MatSidenavModule,
     MatInputModule,
+    TooltipModule.forRoot(),
+    CarouselModule.forRoot(),
   ],
   exports: [
     CardsComponent,

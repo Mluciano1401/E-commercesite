@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import SharedModule from 'src/app/shared/shared.module';
 import LandingRoutingModule from './landing-routing.module';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import LandingPageComponent from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [

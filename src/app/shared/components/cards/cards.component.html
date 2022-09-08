@@ -53,8 +53,7 @@
 <div *ngIf="mode==='profile'" class="card-profile">
   <mat-card (click)="getproducts(datacard._id)" class="example-card">
     <div class="box-img img-small">
-      <img *ngIf="datacard.urlImg === undefined"  mat-card-image class="circle-img" src="../../../assets/images/profileImg/profile-img-0.png" alt="">
-      <img *ngIf="datacard.urlImg !== undefined" mat-card-image  class="circle-img" src="../../../assets/images/profileImg/{{datacard.urlImg}}" alt="">
+      <img class="circle-img" [src]=" '../../../assets/images/profileImg/' + datacard.urlImg || 'profile-img-0.png' " alt=""> 
     </div>
       <mat-card-content>
           <mat-card-title>{{datacard.username}}</mat-card-title>
