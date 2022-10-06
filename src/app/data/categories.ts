@@ -28,25 +28,25 @@ const Dataraw = {
   ],
   menu1: [
     {
-      url: '',
+      url: 'Categories',
       name: 'Categories',
     },
     {
-      url: '',
+      url: 'Suppliers',
       name: 'Suppliers',
     },
     {
-      url: '',
+      url: 'Favorites',
       name: 'Favorites',
     },
   ],
   menu2: [
     {
-      url: '',
+      url: 'Myproducts',
       name: 'My products',
     },
     {
-      url: '',
+      url: 'Myoffers',
       name: 'My offers',
     },
   ],

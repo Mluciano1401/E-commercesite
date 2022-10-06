@@ -1,79 +1,85 @@
 <!-- big card design -->
-<div *ngIf="mode==='big'" class="card-big">
-    <mat-card class="example-card">
+<div *ngIf="mode==='big'" class="example-card card-big">
+    <mat-card>
         <mat-card-header>
           <mat-card-title>{{datacard.name}}</mat-card-title>
           <mat-card-subtitle>{{datacard.description}}</mat-card-subtitle>
         </mat-card-header>
         <div class="box-img img-big">
-          <img (click)="getproduct(datacard._id)" mat-card-image src="{{datacard.urlImg}}" alt="">
+          <img (click)="getproduct(datacard._id)" src="{{datacard.urlImg}}" alt="{{datacard.name}}">
         </div>
-        <mat-card-content>
-          <p>
-            {{datacard.price | currency:"USD"}}
-          </p>
-        </mat-card-content>
-        <mat-card-actions class="mat-card-actions">
-          <button mat-icon-button  (click)="changeColor()" [color]="color" aria-label="Example icon button with a heart icon">
-            <mat-icon>favorite</mat-icon>
-          </button>
-          <button (click)="buyprodut(datacard.price, datacard.supplier, datacard._id)" mat-raised-button color="primary">buy</button>
-        </mat-card-actions>
+        <div class="card-content">
+          <mat-card-content>
+            <p>
+              {{datacard.price | currency:"USD"}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-icon-button  (click)="changeColor()" [color]="color" aria-label="Example icon button with a heart icon">
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <button (click)="buyprodut(datacard.price, datacard.supplier, datacard._id)" mat-raised-button color="primary">buy</button>
+          </mat-card-actions>
+        </div>
     </mat-card>
 </div>
+
 <!-- medium card design -->
-<div *ngIf="mode==='medium'" class="card-medium">
-    <mat-card class="example-card">   
+<div *ngIf="mode==='medium'" class="example-card card-medium">
+    <mat-card>   
       <div class="box-img img-medium">
-        <img (click)="getproduct(datacard._id)" mat-card-image src="{{datacard.urlImg}}" alt="">      
+        <img (click)="getproduct(datacard._id)" src="{{datacard.urlImg}}" alt="{{datacard.name}}">      
       </div>
-         <mat-card-content >
+      <div class="card-content">
+        <mat-card-content >
             <mat-card-title>{{datacard.name}}</mat-card-title>
         </mat-card-content>
-        <mat-card-actions class="mat-card-actions">
-          <span></span>
+        <mat-card-actions>
           <button  mat-icon-button (click)="changeColor()" [color]="color" aria-label="Example icon button with a heart icon">
             <mat-icon>favorite</mat-icon>
           </button>        
         </mat-card-actions>
+      </div>        
     </mat-card>
 </div>
+
 <!-- small card design -->
-<div *ngIf="mode==='small'" class="card-small">
-    <mat-card  (click)="getcategort(datacard.name)" class="example-card">
+<div *ngIf="mode==='small'" class="example-card card-small">
+    <mat-card  (click)="getcategort(datacard.name)">
       <div class="box-img img-small">
-        <img mat-card-image src="{{datacard.urlImg}}" alt="" class="circle-img">
+        <img mat-card-image src="{{datacard.urlImg}}" alt="{{datacard.name}}" class="circle-img2">
       </div>
         <mat-card-content>
             <mat-card-title>{{datacard.name}}</mat-card-title>
         </mat-card-content>
     </mat-card> 
 </div>
+
 <!-- profile card design -->
-<div *ngIf="mode==='profile'" class="card-profile">
-  <mat-card (click)="getproducts(datacard._id)" class="example-card">
+<div *ngIf="mode==='profile'" class="example-card card-profile">
+  <mat-card (click)="getproducts(datacard._id)">
     <div class="box-img img-small">
-      <img class="circle-img" [src]=" '../../../assets/images/profileImg/' + datacard.urlImg || 'profile-img-0.png' " alt=""> 
+      <img class="circle-img" [src]=" '../../../../../assets/images/profileImg/' + datacard.urlImg || 'profile-img-0.png' " alt="{{datacard.name}}"> 
     </div>
       <mat-card-content>
           <mat-card-title>{{datacard.username}}</mat-card-title>
       </mat-card-content>
   </mat-card> 
 </div>
+
 <!-- editable card design -->
-<div *ngIf="mode==='editable'" class="card-editable">
-  <mat-card class="example-card"> 
-    <div class=" card-edit">
+<div *ngIf="mode==='editable'" class="example-card card-editable">
+  <mat-card> 
+    <mat-card-actions>
       <button (click)="openmodal(datacard._id)" class="btn-edit" mat-icon-button aria-label="Example icon button with a heart icon">
         <mat-icon>edit</mat-icon>
       </button> 
       <button (click)="remove(datacard._id)" color="warn" class="btn-edit" mat-icon-button aria-label="Example icon button with a heart icon">
         <mat-icon>delete</mat-icon>
       </button> 
-    </div>
+    </mat-card-actions>
     <br>
     <div class="box-img img-medium">
-
       <img mat-card-image src="{{datacard.urlImg}}" alt="">      
     </div>     
       <mat-card-content (click)="getproduct(datacard._id)">

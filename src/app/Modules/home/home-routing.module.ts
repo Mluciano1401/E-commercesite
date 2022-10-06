@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'category/:id', component: SectionproductsComponent },
   { path: 'seller', component: HomeSellerComponent, canActivate: [SellerGuard] },
   { path: 'profile', component: ProfileComponent },
+  { path: 'profile/settings', component: ProfileComponent },
   { path: '**', redirectTo: 'buyer' },
 ];
 @NgModule({

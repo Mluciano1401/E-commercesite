@@ -1,15 +1,26 @@
 .footer{
-    /* position: fixed;
-    bottom: 0; */
     width: 100%;
     z-index: 2;
     height: 90px;
     border-top: solid 1px transparent;
-    color: #f0f0f0;
     display: flex;
-    justify-content: center;
+}
+section{
     background-color: rgba(0, 0, 0, 0.233);
 }
-div{
-    margin: 5px;
+.box-info{
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 12px;
+}
+.box{
+    padding: 15.5px;
+}
+button{
+    margin: 2px;
+}
+.links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

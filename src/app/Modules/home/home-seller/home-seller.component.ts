@@ -4,6 +4,7 @@ import Dataraw from 'src/app/data/categories';
 
 import StorageService from 'src/app/core/local-storage.service';
 import ProductService from 'src/app/shared/services/products.service/product.service';
+import Products from 'src/app/models/products.model';
 
 @Component({
   selector: 'app-home-seller',
@@ -13,11 +14,11 @@ import ProductService from 'src/app/shared/services/products.service/product.ser
 export default class HomeSellerComponent implements OnInit, OnDestroy {
   titles: Array<string> = ['My products', 'My offers', ''];
 
-  products: Array<any> = [];
+  products: Array<Products> = [];
 
   user: any;
 
-  menuurl: Array<any> = Dataraw.menu2;
+  menuurl: Array<Object> = Dataraw.menu2;
 
   constructor(
     private Productservice: ProductService,

@@ -23,6 +23,9 @@ import SidebarComponent from './components/sidebar/sidebar.component';
 import CardsComponent from './components/cards/cards.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ChatmodalComponent } from './components/chatmodal/chatmodal.component';
+import { BtnFloatComponent } from './components/btn-float/btn-float.component';
+import { GridColsDirective } from './directives/grid-cols.directive';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     BottomProfileOverviewComponent,
     HeaderComponent,
     BoxShopComponent,
+    ChatmodalComponent,
+    BtnFloatComponent,
+    GridColsDirective,
   ],
   imports: [
     CommonModule,
@@ -60,6 +66,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     CarouselComponent,
     HeaderComponent,
     GenericSectionComponent,
+    BtnFloatComponent,
+    GridColsDirective,
   ],
 })
 export default class SharedModule { }

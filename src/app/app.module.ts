@@ -7,11 +7,15 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    MatButtonModule,
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

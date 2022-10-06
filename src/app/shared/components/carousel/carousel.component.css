@@ -1,4 +1,9 @@
 img{
   -webkit-filter: brightness(50%);
   filter: brightness(50%);
+  max-height: 800px;
+}
+.carousel{
+  box-shadow: 4px 5px 24px 5px rgba(0, 0, 0, 0.37);
+  max-height: 800px;
 }

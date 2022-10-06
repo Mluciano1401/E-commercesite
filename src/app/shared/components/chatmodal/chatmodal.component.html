@@ -1,0 +1,24 @@
+<div class="chat-section">
+     <mat-toolbar class="toolbar">
+        <div>
+            <img class="profile-img" src="../../../../assets/images/profileImg/robot.png">
+            <span class="title">bot-assistant</span>
+        </div>
+        <div class="btn-close">                   
+            <mat-icon (click)="modalClose()"></mat-icon>        
+        </div>
+      </mat-toolbar>
+        <div class="box-conversation">
+            <ul class="list-messages">
+    
+            </ul>
+        </div>
+        <form class="box-action">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <input type="text" matInput placeholder="insert a message">
+            </mat-form-field>            
+            <button  mat-mini-fab color="white" aria-label="Example icon button with a delete icon">
+                <mat-icon>send</mat-icon>
+            </button> 
+        </form>
+</div>

@@ -34,8 +34,8 @@ export default class CarouselComponent implements OnInit {
 
   showSlides(n: number) {
     let i;
-    const content = this.el.nativeElement.querySelector('.contentSlides');
-    const dots = this.el.nativeElement.querySelector('.demo');
+    const content = this.el.nativeElement.querySelector('.carousel-inner');
+    const dots = this.el.nativeElement.querySelector('.carousel-item');
     const captionText = this.el.nativeElement.querySelector('#caption');
     if (n === content.childElementCount) { this.slideIndex = 0; }
     if (n < 0) { this.slideIndex = content.childElementCount - 1; }
