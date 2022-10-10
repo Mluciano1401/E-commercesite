@@ -26,6 +26,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ChatmodalComponent } from './components/chatmodal/chatmodal.component';
 import { BtnFloatComponent } from './components/btn-float/btn-float.component';
 import { GridColsDirective } from './directives/grid-cols.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,8 @@ import { GridColsDirective } from './directives/grid-cols.directive';
     MatBadgeModule,
     MatSidenavModule,
     MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
     TooltipModule.forRoot(),
     CarouselModule.forRoot(),
   ],

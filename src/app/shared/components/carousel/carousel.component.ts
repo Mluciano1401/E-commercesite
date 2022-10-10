@@ -32,11 +32,15 @@ export default class CarouselComponent implements OnInit {
     this.showSlides(this.slideIndex = n);
   }
 
+  showSlide(n: number) {
+    this.showSlides(this.slideIndex = n);
+  }
+
   showSlides(n: number) {
     let i;
     const content = this.el.nativeElement.querySelector('.carousel-inner');
     const dots = this.el.nativeElement.querySelector('.carousel-item');
-    const captionText = this.el.nativeElement.querySelector('#caption');
+    const indicator = this.el.nativeElement.querySelector('.carousel-indicator');
     if (n === content.childElementCount) { this.slideIndex = 0; }
     if (n < 0) { this.slideIndex = content.childElementCount - 1; }
     for (i = 0; i < content.childElementCount; i++) {
@@ -44,9 +48,11 @@ export default class CarouselComponent implements OnInit {
     }
     for (i = 0; i < content.childElementCount; i++) {
       dots.className = dots.className.replace(' active', '');
+      indicator.className = indicator.className.replace(' active', '');
     }
     content.children[this.slideIndex].style.display = 'block';
     dots.className += ' active';
-    captionText.innerHTML = dots.alt;
+    indicator.className += ' active';
+    console.log(indicator);
   }
 }

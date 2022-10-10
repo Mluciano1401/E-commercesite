@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'seller', component: HomeSellerComponent, canActivate: [SellerGuard] },
   { path: 'profile', component: ProfileComponent },
   { path: 'profile/settings', component: ProfileComponent },
-  { path: '**', redirectTo: 'buyer' },
+  { path: '**', redirectTo: '/' },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

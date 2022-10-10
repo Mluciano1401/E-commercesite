@@ -24,7 +24,8 @@ export default class ProductService {
   }
 
   getproductsbysupplier(data: string): Observable<any> {
-    return this.http.get(`${this.urlAPI}supplier/${data}`);
+    const result = this.http.get(`${this.urlAPI}supplier/${data}`);
+    return result;
   }
 
   getproductsbycategory(data: string): Observable<any> {

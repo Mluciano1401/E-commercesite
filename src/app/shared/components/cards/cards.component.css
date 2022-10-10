@@ -41,10 +41,14 @@ mat-card-actions{
     display: flex;
     justify-content: center;
     align-self: center;
+}
+.img-medium, .img-big{   
+    width: 200px;
+    height: 225px;
     
 }
 img{
-    display:flex;
+    display:block;
     width: 95.3%;
     height: 95.3%;
 }

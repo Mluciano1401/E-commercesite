@@ -34,11 +34,9 @@ export default class HomeSellerComponent implements OnInit, OnDestroy {
   }
 
   getproductsbyseller() {
-    if (this.user != null) {
-      this.Productservice.getproductsbysupplier(this.user.username).subscribe((data) => {
-        this.products = data;
-      });
-    }
+    this.Productservice.getproductsbysupplier(this.user.username).subscribe((data) => {
+      this.products = data;
+    }); 
   }
 
   ngOnDestroy(): void {

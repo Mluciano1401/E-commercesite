@@ -9,15 +9,15 @@
         </div>
       </mat-toolbar>
         <div class="box-conversation">
-            <ul class="list-messages">
-    
+            <ul class="list-messages" *ngFor="let message of messages">
+                <li>{{message}}</li>
             </ul>
         </div>
-        <form class="box-action">
+        <form [formGroup]="textForm" (ngSubmit)="send()" class="box-action" >
             <mat-form-field class="example-full-width" appearance="fill">
-                <input type="text" matInput placeholder="insert a message">
+                <input type="text" formControlName="text" matInput placeholder="insert a message">
             </mat-form-field>            
-            <button  mat-mini-fab color="white" aria-label="Example icon button with a delete icon">
+            <button type="submit" mat-mini-fab color="white" aria-label="Example icon button with a delete icon">
                 <mat-icon>send</mat-icon>
             </button> 
         </form>

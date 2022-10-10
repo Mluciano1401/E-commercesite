@@ -1,13 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-export interface GridColumns {
-  xs: number;
-  sm: number;
-  md: number;
-  lg: number;
-  xl: number;
-}
-
 @Component({
   selector: 'app-generic-section',
   templateUrl: './generic-section.component.html',
@@ -19,9 +11,14 @@ export default class GenericSectionComponent implements OnInit {
   @Input() data: Array<any> = [];
   @Input() title = ' ';
   @Input() rowh = 0;
-   
+  margin:string = '200px';
   ngOnInit(): void {
-    
+    if(this.mode === 'big' || this.mode === 'editable' ){
+      this.margin = '550px'
+    }
+    if(this.mode === 'medium' ){
+      this.margin = '350px'
+    }
   }
 
 }

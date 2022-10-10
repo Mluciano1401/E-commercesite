@@ -15,3 +15,7 @@
 .spacing-box{
     margin-bottom:62px;
 }
+.footer-box-shop {
+    display: flex;
+    justify-content: space-between;
+}

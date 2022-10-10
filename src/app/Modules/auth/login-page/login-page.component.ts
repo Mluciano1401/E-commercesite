@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -60,9 +61,9 @@ export default class LoginPageComponent implements OnInit {
         this.router.navigate(['/home/buyer']);
       }
       sessionStorage.setItem('User', JSON.stringify(user.dataUser));
-    }, (error: Error) => {
+    }, (error: HttpErrorResponse) => {
       this.hasError = true;
-      this.error = error.message;
+      this.error = error.error.message;
       this.userLogForm.reset();
     });
   }
