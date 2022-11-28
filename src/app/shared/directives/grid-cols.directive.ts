@@ -11,11 +11,13 @@ export interface GridColumns {
 }
 
 @Directive({
-  selector: '[gridCols]'
+  selector: '[gridCols]',
 })
 
-export class GridColsDirective implements OnInit {
-  private gridCols: GridColumns = {xs: 1, sm: 1, md: 2, lg: 3, xl: 4};
+export default class GridColsDirective implements OnInit {
+  private gridCols: GridColumns = {
+    xs: 1, sm: 1, md: 2, lg: 3, xl: 4,
+  };
 
   public get cols(): GridColumns {
     return this.gridCols;
@@ -23,19 +25,21 @@ export class GridColsDirective implements OnInit {
 
   @Input('gridCols')
   public set cols(map: GridColumns) {
-    if (map && ('object' === (typeof map))) {
+    if (map && ((typeof map) === 'object')) {
       this.gridCols = map;
     }
   }
-  
+
   constructor(private grid: MatGridList, private breakpointObserver: BreakpointObserver) {
-    if(this.grid != null) {
+    this.grid = grid;
+    this.breakpointObserver = breakpointObserver;
+    if (this.grid != null) {
       this.grid.cols = this.gridCols.md;
     }
   }
-  
+
   ngOnInit(): void {
-    if(this.grid != null) {
+    if (this.grid != null) {
       this.grid.cols = this.gridCols.md;
     }
     this.breakpointObserver.observe([
@@ -43,9 +47,8 @@ export class GridColsDirective implements OnInit {
       Breakpoints.Small,
       Breakpoints.Medium,
       Breakpoints.Large,
-      Breakpoints.XLarge
-    ]).subscribe(result => {
-
+      Breakpoints.XLarge,
+    ]).subscribe((result) => {
       if (result.breakpoints[Breakpoints.XSmall]) {
         this.grid.cols = this.gridCols.xs;
       }
@@ -63,5 +66,4 @@ export class GridColsDirective implements OnInit {
       }
     });
   }
-
 }

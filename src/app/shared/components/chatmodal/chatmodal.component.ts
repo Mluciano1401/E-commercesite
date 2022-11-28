@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-chatmodal',
   templateUrl: './chatmodal.component.html',
-  styleUrls: ['./chatmodal.component.css']
+  styleUrls: ['./chatmodal.component.css'],
 })
-export class ChatmodalComponent implements OnInit {
+export default class ChatmodalComponent implements OnInit {
   textForm!: FormGroup;
+
   message: string = '';
+
   messages: Array<string> = [];
+
   constructor(
     private matDialogRef: MatDialogRef<ChatmodalComponent>,
     private fb: FormBuilder,
-  ) { 
+  ) {
+    this.matDialogRef = matDialogRef;
     this.fb = fb;
   }
 
@@ -22,18 +26,20 @@ export class ChatmodalComponent implements OnInit {
     this.form();
   }
 
-  private form():void{
+  private form():void {
     this.textForm = this.fb.group({
-      text: ['', ],
-    })
+      text: [''],
+    });
   }
-  modalClose(){
-    this.matDialogRef.close()
+
+  modalClose() {
+    this.matDialogRef.close();
   }
-  send(){
+
+  send() {
     const messageUser = {
       text: this.textForm.get('text')?.value,
-    }
+    };
     this.message = messageUser.text;
     this.messages.push(this.message);
     this.textForm.reset();

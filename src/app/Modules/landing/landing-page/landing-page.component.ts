@@ -24,22 +24,30 @@ export default class LandingPageComponent implements OnInit {
     this.urlImgs = [
       {
         id: 1,
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        textMode: 'center',
+        title: 'You can buy what you want',
+        subtitle: 'from the comfort of your own home',
         url: 'https://d1ih8jugeo2m5m.cloudfront.net/2021/06/Ecommerce-Thumbnail.jpg',
       },
       {
         id: 2,
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        textMode: 'center',
+        title: '',
+        subtitle: 'Wholesale and retail sales',
         url: 'https://www.imagar.com/wp-content/uploads/2020/07/Desarrollo-web-ecommerce-1.jpg',
       },
       {
         id: 3,
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        textMode: 'left',
+        title: 'In a SNAP',
+        subtitle: 'your order arrives!',
         url: 'https://directivosygerentes.es/wp-content/uploads/2020/03/Ecommerce.jpg',
       },
       {
         id: 4,
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        textMode: 'rigth',
+        title: 'The BEST',
+        subtitle: 'at the best price and quality',
         url: 'https://s3.amazonaws.com/cdn.wp.m4ecmx/wp-content/uploads/2019/04/25160328/El-crecimiento-del-eCommerce-en-M%C3%A9xico-compressor.jpg',
       },
     ];

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageErrorComponent } from './page-error.component';
+import { ItemCarouselComponent } from './item-carousel.component';
 
-describe('PageErrorComponent', () => {
-  let component: PageErrorComponent;
-  let fixture: ComponentFixture<PageErrorComponent>;
+describe('ItemCarouselComponent', () => {
+  let component: ItemCarouselComponent;
+  let fixture: ComponentFixture<ItemCarouselComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PageErrorComponent],
+      declarations: [ItemCarouselComponent],
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageErrorComponent);
+    fixture = TestBed.createComponent(ItemCarouselComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

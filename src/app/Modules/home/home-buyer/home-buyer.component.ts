@@ -56,6 +56,6 @@ export default class HomeBuyerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    
+
   }
 }

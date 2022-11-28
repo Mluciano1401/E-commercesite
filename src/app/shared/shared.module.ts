@@ -13,6 +13,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import BoxShopComponent from './components/box-shop/box-shop.component';
 import HeaderComponent from './components/header/header.component';
 import BottomProfileOverviewComponent from './components/bottom-profile-overview/bottom-profile-overview.component';
@@ -21,12 +24,10 @@ import CarouselComponent from './components/carousel/carousel.component';
 import FooterComponent from './components/footer/footer.component';
 import SidebarComponent from './components/sidebar/sidebar.component';
 import CardsComponent from './components/cards/cards.component';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ChatmodalComponent } from './components/chatmodal/chatmodal.component';
-import { BtnFloatComponent } from './components/btn-float/btn-float.component';
-import { GridColsDirective } from './directives/grid-cols.directive';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import ChatmodalComponent from './components/chatmodal/chatmodal.component';
+import BtnFloatComponent from './components/btn-float/btn-float.component';
+import GridColsDirective from './directives/grid-cols.directive';
+import ItemCarouselComponent from './components/item-carousel/item-carousel.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ChatmodalComponent,
     BtnFloatComponent,
     GridColsDirective,
+    ItemCarouselComponent,
   ],
   imports: [
     CommonModule,

@@ -5,7 +5,10 @@ img{
 }
 .carousel{
   box-shadow: 4px 5px 24px 5px rgba(0, 0, 0, 0.37);
+  width: 100%;
+  min-height: 200px;
   max-height: 800px;
+  height: 800px;
 }
 .carousel-caption{
   text-align: left;

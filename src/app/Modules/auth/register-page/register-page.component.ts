@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { CookieService } from 'ngx-cookie-service';
-import dataUser from '../../../models/user/datauser.model';
+import dataUser from 'src/app/models/user/dataUser.model';
 import User from '../../../models/user/user.model';
 
 import AuthService from '../services/auth.service';
@@ -73,7 +73,7 @@ export default class RegisterPageComponent implements OnInit {
       role: this.userForm.get('role')?.value,
       money: 0,
     };
-    this.userService.postUser(USER).subscribe((user: any) => {
+    this.userService.postUser(USER).subscribe((user: dataUser) => {
       const tokenSession = user.dataUser.accessToken;
       if (user.dataUser.role === 'seller') {
         this.cookie.set('tokenseller', tokenSession, 1, '/');
