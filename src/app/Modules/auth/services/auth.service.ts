@@ -18,11 +18,11 @@ export default class AuthService {
     this.http = http;
   }
 
-  postUser(user: User): Observable<unknown> {
+  postUser(user: User): Observable<any> {
     return this.http.post(`${this.url}register`, user);
   }
 
-  loginUser(data: UserLog): Observable<unknown> {
+  loginUser(data: UserLog): Observable<any> {
     return this.http.post(`${this.url}login`, data);
   }
 }

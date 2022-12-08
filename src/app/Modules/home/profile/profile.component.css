@@ -23,3 +23,10 @@ section{
 .example-full-width {
     width: 70%;
 }
+.img-edit{
+    background-color: rgba(0, 0, 0, 0.247);
+}
+textarea{
+    padding: 20px;
+    height: 150px;
+}

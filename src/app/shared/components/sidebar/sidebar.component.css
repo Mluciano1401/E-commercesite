@@ -49,3 +49,6 @@ a{
   display: flex;
   justify-content: end;
 }
+app-header{
+  width: 100%;
+}

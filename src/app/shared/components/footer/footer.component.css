@@ -1,11 +1,38 @@
 .footer{
-    /* position: fixed;
-    bottom: 0; */
     width: 100%;
     z-index: 2;
-    height: 85px;
+    height: 90px;
     border-top: solid 1px transparent;
-    color: #f0f0f0;
     display: flex;
+    text-align: center;
     justify-content: center;
+    flex-direction: column;
+}
+section{
+    background-color: rgba(0, 0, 0, 0.233);
+}
+.box-info{
+    color: #f0f0f0;
+    font-size: 12px;
+    text-align: center;
+}
+.box{
+    padding: 15.5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+button{
+    margin: 2px;
+}
+.links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+h3{
+    font-weight: 500;
+}
+.icon{
+    width: 20px;
 }

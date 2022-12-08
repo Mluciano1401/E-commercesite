@@ -1,7 +1,7 @@
 <div class="section-generic" [ngClass]="{'card-small':mode === 'small','card-big':mode === 'big','card-medium':mode === 'medium', 'card-profile':mode ==='profile', 'card-editable':mode==='editable'}">
     <h1>{{title}}</h1>
     <br/>
-    <mat-grid-list cols="{{cols}}" rowHeight="{{rowh}}" >
+    <mat-grid-list [gridCols]="{xs: 1, sm: 1, md: 2, lg: 3, xl: 4}"  rowHeight="{{margin}}">
         <mat-grid-tile *ngFor="let category of data">
             <app-cards [datacard]="category" [mode]="mode"></app-cards>
         </mat-grid-tile>  

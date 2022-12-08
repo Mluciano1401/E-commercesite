@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css'],
 })
 export default class FooterComponent implements OnInit {
+  margin:string = '30px';
+
   ngOnInit(): void {
+
   }
 }

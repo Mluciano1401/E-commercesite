@@ -4,7 +4,7 @@ export default function ConfirmedValidator(controlName: string, matchingControlN
   return (formGroup: FormGroup) => {
     const control = formGroup.controls[controlName];
     const matchingControl = formGroup.controls[matchingControlName];
-    if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
+    if (matchingControl.errors && !matchingControl.errors['confirmedValidator']) {
       return;
     }
     if (control.value !== matchingControl.value) {

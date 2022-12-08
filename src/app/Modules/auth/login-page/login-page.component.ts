@@ -1,9 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { CookieService } from 'ngx-cookie-service';
-import dataUser from '../../../models/user/datauser.model';
+import dataUser from 'src/app/models/user/dataUser.model';
 
 import AuthService from '../services/auth.service';
 
@@ -50,7 +51,7 @@ export default class LoginPageComponent implements OnInit {
       username: this.userLogForm.get('username')?.value,
       password: this.userLogForm.get('password')?.value,
     };
-    this.userService.loginUser(login).subscribe((user:dataUser) => {
+    this.userService.loginUser(login).subscribe((user: dataUser) => {
       const tokenSession = user.dataUser.accessToken;
       if (user.dataUser.role === 'seller') {
         this.cookie.set('tokenseller', tokenSession, 2, '/');
@@ -60,9 +61,9 @@ export default class LoginPageComponent implements OnInit {
         this.router.navigate(['/home/buyer']);
       }
       sessionStorage.setItem('User', JSON.stringify(user.dataUser));
-    }, (error: Error) => {
+    }, (error: HttpErrorResponse) => {
       this.hasError = true;
-      this.error = error.message;
+      this.error = error.error.message;
       this.userLogForm.reset();
     });
   }

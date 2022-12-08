@@ -28,25 +28,29 @@ export default class CarouselComponent implements OnInit {
     this.showSlides(this.slideIndex += n);
   }
 
-  currentSlide(n: number) {
+  showSlide(n: number) {
     this.showSlides(this.slideIndex = n);
   }
 
   showSlides(n: number) {
     let i;
-    const content = this.el.nativeElement.querySelector('.contentSlides');
-    const dots = this.el.nativeElement.querySelector('.demo');
-    const captionText = this.el.nativeElement.querySelector('#caption');
+    const content = this.el.nativeElement.querySelector('.carousel-inner');
+    const dots = this.el.nativeElement.querySelector('.carousel-item');
+    const indicator = this.el.nativeElement.querySelector('.carousel-indicator');
     if (n === content.childElementCount) { this.slideIndex = 0; }
     if (n < 0) { this.slideIndex = content.childElementCount - 1; }
-    for (i = 0; i < content.childElementCount; i++) {
+    console.dir(content)
+    console.dir(dots)
+    for (i = 1; i < content.childElementCount-1; i++) {
       content.children[i].style.display = 'none';
     }
-    for (i = 0; i < content.childElementCount; i++) {
-      dots.className = dots.className.replace(' active', '');
+    for (i = 1; i < content.childElementCount-1; i++) {
+      dots.className = dots.className.replace('active', '');
+      indicator.className = indicator.className.replace('active', '');
+      console.dir(indicator);
     }
     content.children[this.slideIndex].style.display = 'block';
-    dots.className += ' active';
-    captionText.innerHTML = dots.alt;
+    dots.className += 'active';
+    indicator.className += 'active';
   }
 }

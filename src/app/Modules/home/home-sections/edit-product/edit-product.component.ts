@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 import ProductService from 'src/app/shared/services/products.service/product.service';
-import { Dataraw } from '../../../../data/categories';
+import Dataraw from '../../../../data/categories';
 
 @Component({
   selector: 'app-edit-product',

@@ -6,7 +6,7 @@
             <mat-divider></mat-divider>  
           <span class="example-spacer"></span>
           <div class="btn-close">                   
-              <mat-icon (click)="drawer.close()">close</mat-icon>        
+              <mat-icon (click)="drawer.close()"></mat-icon>        
           </div>
         </mat-toolbar>
         <div class="content-menu" *ngFor="let item of menu">
@@ -19,13 +19,11 @@
           <mat-icon (click)="drawer.toggle()">menu</mat-icon>      
           <span class="example-spacer"></span>
           <span>Hello, {{user.username}}</span>
-          <button *ngIf="user.urlImg !== undefined" mat-icon-button (click)="openBottomSheet()">
-            <img class="profile-img" src="../../../assets/images/profileImg/{{user.urlImg}}" alt="">
-          </button>
-          <button *ngIf="user.urlImg === undefined" mat-icon-button (click)="openBottomSheet()">
-            <img class="profile-img" src="../../../assets/images/profileImg/profile-img-0.png" alt="">
+          <button  mat-icon-button (click)="openBottomSheet()">
+            <img class="profile-img" [src]=" '../../../assets/images/profileImg/' + user.urlImg || 'profile-img-0.png' " alt="{{user.name}}">
           </button>
         </mat-toolbar>        
+        <app-header></app-header>
         <div class="categories-content">      
           <ng-container *ngTemplateOutlet="sectionbuyer"></ng-container>   
         </div>
@@ -37,10 +35,11 @@
         <mat-icon>add</mat-icon>
       </button>
     </div>
-    <app-generic-section id="{{menu[0].url}}" [title]="titless[0]" [data]="data" [mode]="mode" [rowh]=500></app-generic-section>
+    <app-generic-section  [title]="titless[0]" [data]="data" [mode]="mode" [rowh]=500></app-generic-section>
   
-    <app-generic-section id="{{menu[1].url}}" [title]="titless[1]" [data]="seller" [mode]="'profile'" [rowh]=325></app-generic-section>
+    <app-generic-section  [title]="titless[1]" [data]="seller" [mode]="'profile'" [rowh]=325></app-generic-section>
     
-    <app-generic-section id="#" [title]="titless[2]" [data]="categories" [mode]="'small'" [rowh]=325></app-generic-section>
+    <app-generic-section  [title]="titless[2]" [data]="categories" [mode]="'small'" [rowh]=325></app-generic-section>
   </ng-template>
 </div>
+<app-btn-float></app-btn-float>

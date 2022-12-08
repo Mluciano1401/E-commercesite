@@ -3,7 +3,7 @@
         <div class="section-profile">
           <img class="profile-img" [src]=" '../../../assets/images/profileImg/' + user.urlImg || 'profile-img-0.png' " alt="">
             <div>
-                <h3 mat-line>{{user.username}}</h3>
+                <h3 mat-line><strong>{{user.username}}</strong></h3>
                 <h3 mat-line>{{user.name}} {{user.lastname}}</h3>
             </div>
         </div>          
@@ -11,12 +11,12 @@
         <a href="/home/profile" mat-list-item >
           <span mat-line>View profile</span>
         </a>      
-        <a href="/home/profile" mat-list-item >
-            <span mat-line>Setting</span>
+        <a href="/home/profile/settings" mat-list-item >
+            <span mat-line>Settings</span>
         </a>
         <mat-divider></mat-divider> 
         <a (click)="logOut()" mat-list-item >
-          <span mat-line>Log out</span>
+          <span mat-line style="color: #130e3daf;">Log out</span>
         </a>
       </mat-nav-list>
 </div>

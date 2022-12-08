@@ -1,14 +1,15 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { CookieService } from 'ngx-cookie-service';
-import { dataUser } from '../../../models/user.model';
+import dataUser from 'src/app/models/user/dataUser.model';
 import User from '../../../models/user/user.model';
 
 import AuthService from '../services/auth.service';
 
-import { ConfirmedValidator } from './validator/confirmed.validator';
+import ConfirmedValidator from './validator/confirmed.validator';
 
 @Component({
   selector: 'app-register-page',
@@ -72,7 +73,7 @@ export default class RegisterPageComponent implements OnInit {
       role: this.userForm.get('role')?.value,
       money: 0,
     };
-    this.userService.postUser(USER).subscribe((user:dataUser) => {
+    this.userService.postUser(USER).subscribe((user: dataUser) => {
       const tokenSession = user.dataUser.accessToken;
       if (user.dataUser.role === 'seller') {
         this.cookie.set('tokenseller', tokenSession, 1, '/');
@@ -82,9 +83,9 @@ export default class RegisterPageComponent implements OnInit {
         this.router.navigate(['/home/buyer']);
       }
       sessionStorage.setItem('User', JSON.stringify(user.dataUser));
-    }, (error: Error) => {
+    }, (error: HttpErrorResponse) => {
       this.hasError = true;
-      this.error = error.message;
+      this.error = error.error.message;
       this.userForm.reset();
     });
   }
